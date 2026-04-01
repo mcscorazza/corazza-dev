@@ -1,0 +1,29 @@
+generator client {
+  provider        = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  slug      String   @unique
+  title     String
+  content   String   @db.Text
+  hash      String   // MD5 para o Script de Sync saber se mudou
+  trail     String   // Ex: FullStack, iMov, Carreira
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  assets    Asset[]
+}
+
+model Asset {
+  id       String @id @default(uuid())
+  filename String
+  url      String
+  hash     String // Para evitar subir a mesma imagem duas vezes
+  postId   String
+  post     Post   @relation(fields: [postId], references: [id])
+}
