@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Post } from '../types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
 export function PostPage() {
@@ -19,7 +19,7 @@ export function PostPage() {
   if (!post) return <div className="p-10 text-center">Carregando post...</div>;
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-20">
+    <article className="max-w-5xl mx-auto px-8 py-20 bg-zinc-50">
       <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block">
         ← Voltar para a lista
       </Link>
@@ -36,14 +36,20 @@ export function PostPage() {
         </p>
       </header>
 
-      <div className="prose prose-blue lg:prose-xl max-w-none mx-auto">
+      <div className="prose prose-blue lg:prose-xl max-w-full mx-auto font-sans">
         <ReactMarkdown
           components={{
             code({ node, inline, className, children, ...props }: any) {
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
                 <SyntaxHighlighter
-                  style={vscDarkPlus}
+                  style={oneLight}
+                  customStyle={{
+                    backgroundColor: 'transparent',
+                    padding: 0,
+                    margin: 0,
+                    fontSize: '0.95rem',
+                  }}
                   language={match[1]}
                   PreTag="div"
                   {...props}

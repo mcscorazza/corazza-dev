@@ -2,13 +2,17 @@
 @plugin "@tailwindcss/typography";
 
 .prose pre {
-  background-color: transparent !important;
-  padding: 8px !important;
-  margin: 1.5rem 0 !important;
+  background-color: #f8fafc !important; 
+  border: 1px solid #e2e8f0; 
   border-radius: 8px;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
 }
 
-.prose code::before,
-.prose code::after {
-  content: "" !important;
+.prose :not(pre) > code {
+  background-color: #f1f5f9;
+  color: #334155;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 500;
 }
