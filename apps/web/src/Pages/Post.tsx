@@ -43,6 +43,30 @@ export function PostPage() {
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkGfm]}
           components={{
+            img: ({ node, ...props }) => {
+              const [url, label] = props.src?.split('#') || [];
+
+              // Mapeamos o label para classes reais do Tailwind ou CSS
+              const classMap: Record<string, string> = {
+                small: 'max-w-[300px] shadow-md',
+                side: 'max-w-[40%] float-right ml-4 mb-4',
+                full: 'w-full shadow-2xl',
+                center: 'max-w-[70%] mx-auto display-block'
+              };
+
+              const customClass = label ? classMap[label] : 'max-w-[70%] mx-auto';
+
+              return (
+                <figure className="text-center my-10">
+                  <img src={url} className={customClass}/>
+                  {props.alt && (
+                    <figcaption className="text-sm text-gray-500 mt-2 italic">
+                      {props.alt}
+                    </figcaption>
+                  )}
+                </figure>
+              );
+            },
             code({ node, inline, className, children, ...props }: any) {
               const match = /language-(\w+)/.exec(className || '');
               return !inline && match ? (
