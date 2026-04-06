@@ -2,7 +2,7 @@
 title: PostgreSQL
 trail: FullStack
 ---
-# PostgreSQL
+
 ## Geral
 
 ### Instalação PostgreSQL

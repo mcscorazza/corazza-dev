@@ -2,17 +2,47 @@
 @plugin "@tailwindcss/typography";
 
 .prose pre {
-  background-color: #f8fafc !important; 
-  border: 1px solid #e2e8f0; 
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 1rem !important;
   margin: 1rem 0 !important;
 }
 
-.prose :not(pre) > code {
+.prose :not(pre)>code {
   background-color: #f1f5f9;
   color: #334155;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-weight: 500;
+}
+
+.prose table {
+  max-width: 50%;
+  font-size: 0.85em;
+  margin: 0 auto;
+}
+
+.prose table td {
+  padding: 0.25em;
+}
+
+.prose table th {
+  font-weight: 700;
+  padding: 0.25em;
+}
+
+.prose table tbody td:first-child {
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.prose img {
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  margin: 0 auto;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }

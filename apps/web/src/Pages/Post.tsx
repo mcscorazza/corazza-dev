@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { Post } from '../types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -19,7 +21,7 @@ export function PostPage() {
   if (!post) return <div className="p-10 text-center">Carregando post...</div>;
 
   return (
-    <article className="max-w-5xl mx-auto px-8 py-20 bg-zinc-50">
+    <article className="max-w-4xl mx-auto px-8 py-20 bg-zinc-50 text-xs">
       <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block">
         ← Voltar para a lista
       </Link>
@@ -36,8 +38,10 @@ export function PostPage() {
         </p>
       </header>
 
-      <div className="prose prose-blue lg:prose-xl max-w-full mx-auto font-sans">
+      <div className="prose prose-base prose-blue md:prose-lg max-w-full mx-auto font-sans">
         <ReactMarkdown
+          rehypePlugins={[rehypeRaw]}
+          remarkPlugins={[remarkGfm]}
           components={{
             code({ node, inline, className, children, ...props }: any) {
               const match = /language-(\w+)/.exec(className || '');

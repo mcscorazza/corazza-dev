@@ -65,13 +65,13 @@ app.get("/api/posts/:slug/status", async (req, res) => {
 
 app.post("/api/posts", async (req, res) => {
   console.log("📥 Recebi do script:", req.body);
-  const { slug, title, content, hash, trail } = req.body;
+  const { slug, title, content, hash, trail, line } = req.body;
 
   try {
     const post = await prisma.post.upsert({
       where: { slug },
-      update: { title, content, hash, trail },
-      create: { slug, title, content, hash, trail },
+      update: { title, content, hash, trail, line },
+      create: { slug, title, content, hash, trail, line },
     });
 
     console.log(`✅ Post sincronizado: ${slug}`);
