@@ -1,0 +1,8 @@
+{
+  "name": "corazza-dev",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

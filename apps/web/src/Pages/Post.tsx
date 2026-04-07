@@ -43,10 +43,16 @@ export function PostPage() {
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkGfm]}
           components={{
+            p: ({ children }) => {
+              if (typeof children === 'object' && children !== null) {
+                const isImage = (children as any).type === 'img' || (children as any).props?.node?.tagName === 'img';
+                if (isImage) return <>{children}</>;
+              }
+              return <p className="mb-4 leading-relaxed">{children}</p>;
+            },
             img: ({ node, ...props }) => {
               const [url, label] = props.src?.split('#') || [];
 
-              // Mapeamos o label para classes reais do Tailwind ou CSS
               const classMap: Record<string, string> = {
                 small: 'max-w-[300px] shadow-md',
                 side: 'max-w-[40%] float-right ml-4 mb-4',
@@ -58,7 +64,7 @@ export function PostPage() {
 
               return (
                 <figure className="text-center my-10">
-                  <img src={url} className={customClass}/>
+                  <img src={url} className={customClass} />
                   {props.alt && (
                     <figcaption className="text-sm text-gray-500 mt-2 italic">
                       {props.alt}

@@ -1,15 +1,54 @@
 services:
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
+    container_name: corazza-db
     restart: always
     environment:
       POSTGRES_USER: corazza
       POSTGRES_PASSWORD: corz
-      POSTGRES_DB: corazza_dev
+      POSTGRES_DB: corazza-blog
+    healthcheck:
+      test: ["CMD", "pg_isready -U corazza -d corazza-blog"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: corazza-api
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://corazza:corz@db:5432/corazza-blog?schema=public"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: corazza-web
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: "http://localhost:3000/api"
+    depends_on:
+      - api
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/web/public/assets/posts-images
 
 volumes:
   postgres_data:
