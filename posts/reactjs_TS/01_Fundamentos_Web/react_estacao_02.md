@@ -7,8 +7,12 @@ summary: "Domine o design web: entenda o Box Model para controlar espaços e o F
 # Estação 2: 
 ## CSS Básico, Box Model e o Poder do Flexbox
 
-**Palavras:** ~1.400 | **Tempo de leitura:** 7 min 
-**Progresso:** [██░░░░░░░░░░░░░░░░░░] 11% (Estação 02/18)
+|RESUMO| |
+|:---|---:|
+|Palavras:| ~1.400| 
+|Tempo de leitura:| 7 min|
+| Linha | 01 Fundamentos |
+|Progresso:|`[■■------------------] 11%`|
 
 ---
 Na Estação 1, nós construímos os alicerces lógicos da nossa aplicação usando HTML Semântico. Erguemos as paredes, definimos onde ficam as portas e criamos um ambiente estruturado que navegadores e robôs conseguem entender. Mas se abrirmos essa página agora, ela se parecerá com um documento cru da década de 90.

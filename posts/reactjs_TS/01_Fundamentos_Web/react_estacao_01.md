@@ -4,11 +4,17 @@ trail: "ReactJS + TS"
 line: "Fundamentos"
 summary: "Fuja da sopa de divs! A Estação 1 foca em HTML Semântico: a base vital para SEO, acessibilidade e apps React profissionais."
 ---
+
 # Estação 01
 ## HTML Moderno e Web Semântica
 
-**Palavras:** ~1.450 | **Tempo de leitura:** 7 min
-**Progresso:** [█░░░░░░░░░░░░░░░░░░░] 6% (Estação 01/18)
+|RESUMO| |
+|:---|---:|
+|Palavras:| ~1.450| 
+|Tempo de leitura:| 7 min|
+| Linha | 01 Fundamentos |
+|Progresso:|`[■-------------------] 6%`|
+
 
 No ecossistema moderno de desenvolvimento web, onde bibliotecas como o React dominam a narrativa, é comum encontrar desenvolvedores que negligenciam o HTML. Há uma percepção equivocada de que o HTML é apenas um "detalhe de implementação" ou algo que o JSX resolverá sozinho. No entanto, o HTML é a interface final entre a sua aplicação e o mundo — seja esse mundo um navegador, um motor de busca ou uma tecnologia assistiva para pessoas com deficiência.
 
