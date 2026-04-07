@@ -6,13 +6,13 @@ services:
     environment:
       POSTGRES_USER: corazza
       POSTGRES_PASSWORD: corz
-      POSTGRES_DB: corazza-blog
+      POSTGRES_DB: corazza_blog
     healthcheck:
-      test: ["CMD", "pg_isready -U corazza -d corazza-blog"]
-      interval: 10s
+      test: ["CMD", "pg_isready", "-q", "-d", "corazza_blog", "-U", "corazza"]
+      interval: 5s
       timeout: 5s
       retries: 10
-      start_period: 20s
+      start_period: 10s
     ports:
       - "5432:5432"
     volumes:
@@ -26,7 +26,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: "postgresql://corazza:corz@db:5432/corazza-blog?schema=public"
+      DATABASE_URL: "postgresql://corazza:corz@db:5432/corazza_blog?schema=public"
     depends_on:
       db:
         condition: service_healthy

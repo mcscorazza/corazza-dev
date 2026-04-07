@@ -1,6 +1,8 @@
 ---
 title: PostgreSQL
-trail: FullStack
+trail: Databases
+line: Fundamentos
+summary: 'Comandos básicos para PostgrSQL.'
 ---
 
 ## Geral

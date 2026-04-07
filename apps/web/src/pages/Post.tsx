@@ -3,17 +3,18 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { Post } from '../types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Post } from '@corazza/types';
 
 
 export function PostPage() {
   const { slug } = useParams();
   const [post, setPost] = useState<Post | null>(null);
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/posts/${slug}`)
+    fetch(`${apiUrl}/posts/${slug}`)
       .then(res => res.json())
       .then(data => setPost(data));
   }, [slug]);
@@ -21,7 +22,7 @@ export function PostPage() {
   if (!post) return <div className="p-10 text-center">Carregando post...</div>;
 
   return (
-    <article className="max-w-4xl mx-auto px-8 py-20 bg-zinc-50 text-xs">
+    <article className="max-w-4xl mx-auto px-8 py-20 bg-white text-xs">
       <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block">
         ← Voltar para a lista
       </Link>
@@ -43,10 +44,16 @@ export function PostPage() {
           rehypePlugins={[rehypeRaw]}
           remarkPlugins={[remarkGfm]}
           components={{
+            p: ({ children }) => {
+              if (typeof children === 'object' && children !== null) {
+                const isImage = (children as any).type === 'img' || (children as any).props?.node?.tagName === 'img';
+                if (isImage) return <>{children}</>;
+              }
+              return <p className="mb-4 leading-relaxed">{children}</p>;
+            },
             img: ({ node, ...props }) => {
               const [url, label] = props.src?.split('#') || [];
 
-              // Mapeamos o label para classes reais do Tailwind ou CSS
               const classMap: Record<string, string> = {
                 small: 'max-w-[300px] shadow-md',
                 side: 'max-w-[40%] float-right ml-4 mb-4',
@@ -58,7 +65,7 @@ export function PostPage() {
 
               return (
                 <figure className="text-center my-10">
-                  <img src={url} className={customClass}/>
+                  <img src={url} className={customClass} />
                   {props.alt && (
                     <figcaption className="text-sm text-gray-500 mt-2 italic">
                       {props.alt}
@@ -82,7 +89,7 @@ export function PostPage() {
                   PreTag="div"
                   {...props}
                 >
-                  {String(children).replace(/\n$/, '')}
+                  {String(children).trim().replace(/\n$/, '')}
                 </SyntaxHighlighter>
               ) : (
                 <code className={className} {...props}>

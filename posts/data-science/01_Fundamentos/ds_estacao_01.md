@@ -1,14 +1,10 @@
 ---
 title: Matrizes e os Fundamentos da Álgebra Linear
 trail: Roadmap DS + ML
+line: Fundamentos
+summary: 'Introdução aos fundamentos de Matrizes e Vetores em Álgebra Linear'
 ---
 
-| RESUMO           |             |
-| :--------------- | ----------: |
-| Trilha           | Fundamentos |
-| Progresso        |          1% |
-| # Palavras       |        1730 |
-| Tempo de Leitura |   7 minutos |
 
 ### 1. A Passagem do Escalar para o Multidimensional
 

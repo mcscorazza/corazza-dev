@@ -2,25 +2,18 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
 
-import { Home } from './Pages/Home';
-import { PostPage } from './Pages/Post'; // Sua página de post que já existe
+import { Home } from './pages/Home';
+import { PostPage } from './pages/Post';
 
-export interface Post {
-  id: string;
-  slug: string;
-  title: string;
-  content: string;
-  trail: string;
-  line: string;
-  createdAt: string;
-}
+import { Post } from '@corazza/types';
 
 export default function App() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
   useEffect(() => {
-    axios.get<Post[]>('http://localhost:3000/api/posts')
+    axios.get<Post[]>(`${apiUrl}/posts`)
     .then((res) => {
         setPosts(res.data);
         setLoading(false);
@@ -45,8 +38,6 @@ export default function App() {
             </a>
           </div>
         </header>
-
-        {/* Gerenciador de Rotas */}
         <Routes>
           <Route path="/" element={<Home posts={posts} />} />
           <Route path="/post/:slug*" element={<PostPage />} />

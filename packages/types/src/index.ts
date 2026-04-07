@@ -1,8 +1,11 @@
 export interface Post {
   id: string;
-  slug: string;
   title: string;
-  trail: string;
+  slug: string;
+  summary?: string;
   content: string;
+  trail: string;
+  line: string;
   createdAt: string;
+  updatedAt?: string;
 }

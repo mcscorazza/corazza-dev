@@ -12,6 +12,7 @@ model Post {
   title     String
   content   String   @db.Text
   hash      String
+  summary   String
   trail     String
   line      String   @default("Default")
   published Boolean  @default(false)

@@ -20,6 +20,7 @@
     "typescript": "^6.0.2"
   },
   "dependencies": {
+    "@corazza/types": "*",
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.3.4",
     "react-markdown": "^10.1.0",

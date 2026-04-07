@@ -65,13 +65,13 @@ app.get("/api/posts/:slug/status", async (req, res) => {
 
 app.post("/api/posts", async (req, res) => {
   console.log("📥 Recebi do script:", req.body);
-  const { slug, title, content, hash, trail, line } = req.body;
+  const { slug, title, content, hash, summary, trail, line } = req.body;
 
   try {
     const post = await prisma.post.upsert({
       where: { slug },
-      update: { title, content, hash, trail, line },
-      create: { slug, title, content, hash, trail, line },
+      update: { title, content, hash, summary, trail, line },
+      create: { slug, title, content, summary, hash, trail, line },
     });
 
     console.log(`✅ Post sincronizado: ${slug}`);
@@ -90,6 +90,6 @@ prisma
   .catch((err) => console.error("❌ Falha ao conectar no banco:", err));
 
 const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 API do corazza.dev rodando em http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 API rodando em http://0.0.0.0:${PORT}`);
 });

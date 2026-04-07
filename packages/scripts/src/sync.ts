@@ -37,6 +37,7 @@ async function syncPosts() {
       await axios.post(`${API_URL}/posts`, {
         slug,
         title: data.title || slug,
+        summary: data.summary || "",
         content: processedContent,
         hash,
         trail,

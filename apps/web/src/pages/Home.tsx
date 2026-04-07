@@ -1,6 +1,11 @@
 import { PostCard } from '../components/PostCard';
+import { Post } from '@corazza/types';
 
-export const Home = ({ posts }) => {
+interface HomeProps {
+  posts: Post[];
+}
+
+export const Home = ({ posts }: HomeProps) => {
   return (
     <main className="max-w-6xl mx-auto px-6 py-16">
       {/* Header da Home */}
