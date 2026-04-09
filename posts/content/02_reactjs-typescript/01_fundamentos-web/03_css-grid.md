@@ -1,7 +1,7 @@
 ---
 title: "CSS Grid"
-trail: "ReactJS + TS"
-line: "Fundamentos"
+trail: "ReactJS + Typescript"
+line: "Fundamentos Web"
 summary: "Domine o CSS Grid e a arquitetura bidimensional. Aprenda a desenhar layouts responsivos e dashboards complexos usando grid-template-areas."
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "HTML Moderno Semântico"
-trail: "ReactJS + TS"
-line: "Fundamentos"
+trail: "ReactJS + Typescript"
+line: "Fundamentos Web"
 summary: "Fuja da sopa de divs! A Estação 1 foca em HTML Semântico: a base vital para SEO, acessibilidade e apps React profissionais."
 ---
 

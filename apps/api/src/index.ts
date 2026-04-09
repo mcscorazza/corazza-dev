@@ -23,7 +23,12 @@ app.use(express.json());
 app.get("/api/posts", async (req, res) => {
   try {
     const posts = await prisma.post.findMany({
-      orderBy: { createdAt: "desc" },
+      include: {
+        line: {
+          include: { trail: true }
+        }
+      },
+      orderBy: { createdAt: 'desc' }
     });
     res.json(posts);
   } catch (error) {
@@ -31,64 +36,195 @@ app.get("/api/posts", async (req, res) => {
   }
 });
 
-app.get('/api/lines/:lineName', async (req, res) => {
-  const { lineName } = req.params;
+app.get("/api/trails/:slug", async (req, res) => {
+  const { slug } = req.params;
+
+  try {
+    const trail = await prisma.trail.findUnique({
+      where: { slug },
+      include: {
+        lines: {
+          orderBy: { order: 'asc' },
+          include: {
+            posts: {
+              orderBy: { order: 'asc' },
+              select: { 
+                id: true, 
+                title: true, 
+                slug: true, 
+                order: true 
+              }
+            }
+          }
+        }
+      }
+    });
+
+    if (!trail) {
+      return res.status(404).json({ error: "Trilha não encontrada no banco." });
+    }
+
+    res.json(trail);
+  } catch (error) {
+    console.error("❌ Erro ao buscar detalhes da trilha:", error);
+    res.status(500).json({ error: "Erro interno ao processar a trilha." });
+  }
+});
+
+app.get('/api/lines/:trailSlug/:lineSlug', async (req, res) => {
+  const { trailSlug, lineSlug } = req.params;
+
+  try {
+    const posts = await prisma.post.findMany({
+      where: {
+        line: {
+          slug: lineSlug,
+          trail: {
+            slug: trailSlug // O "segredo" está aqui: filtramos pelo pai também
+          }
+        }
+      },
+      orderBy: { order: 'asc' },
+      select: { title: true, slug: true, order: true }
+    });
+    res.json(posts);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar posts da linha específica." });
+  }
+});
+
+app.get("/api/trails", async (req, res) => {
+  try {
+    const trails = await prisma.trail.findMany({
+      orderBy: { order: 'asc' },
+      include: {
+        lines: {
+          orderBy: { order: 'asc' },
+          include: {
+            posts: {
+              orderBy: { order: 'asc' },
+              take: 1,
+              select: { slug: true }
+            }
+          }
+        }
+      }
+    });
+
+    const summary = trails.map(t => ({
+      id: t.id,
+      title: t.title,
+      slug: t.slug,
+      lines: t.lines.map(l => ({
+        title: l.title,
+        slug: l.slug,
+        firstPostSlug: l.posts[0]?.slug
+      })),
+      postsCount: t.lines.reduce((acc, line) => acc + line.posts.length, 0) // Exemplo simplificado
+    }));
+
+    res.json(summary);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao carregar menu lateral" });
+  }
+});
+
+app.get('/api/trails/:trailSlug/lines/:lineSlug', async (req, res) => {
+  const { trailSlug, lineSlug } = req.params;
+
   const posts = await prisma.post.findMany({
-    where: { line: lineName },
-    orderBy: { createdAt: 'asc' },
-    select: { title: true, slug: true }
+    where: {
+      line: {
+        slug: lineSlug,
+        trail: { slug: trailSlug }
+      }
+    },
+    orderBy: { order: 'asc' },
   });
   res.json(posts);
 });
 
-app.get("/api/posts/:slug", async (req, res) => {
-  const { slug } = req.params;
-  const post = await prisma.post.findUnique({ where: { slug } });
+app.get("/api/posts/:trailSlug/:lineSlug/:postSlug", async (req, res) => {
+  const { trailSlug, lineSlug, postSlug } = req.params;
+
+  const post = await prisma.post.findUnique({
+    where: {
+      slug_lineId: {
+        slug: postSlug,
+        lineId: (await prisma.line.findFirst({
+          where: { slug: lineSlug, trail: { slug: trailSlug } }
+        }))?.id || ''
+      }
+    },
+    include: {
+      line: { include: { trail: true } }
+    }
+  });
 
   if (!post) return res.status(404).json({ error: "Post não encontrado" });
   res.json(post);
 });
 
-app.get("/api/posts/:slug/status", async (req, res) => {
-  const { slug } = req.params;
-  const { hash } = req.query;
-
-  try {
-    const post = await prisma.post.findUnique({
-      where: { slug },
-      select: { hash: true },
-    });
-
-    if (!post) {
-      return res.json({ status: "MISSING" });
-    }
-
-    if (post.hash === hash) {
-      return res.json({ status: "MATCH" });
-    }
-
-    return res.json({ status: "OUTDATED" });
-  } catch (error) {
-    res.status(500).json({ error: "Erro ao consultar o banco." });
-  }
-});
-
 app.post("/api/posts", async (req, res) => {
-  console.log("📥 Recebi do script:", req.body);
-  const { slug, title, content, hash, summary, trail, line } = req.body;
+  const { slug, title, content, hash, summary, order, trail, line } = req.body;
 
   try {
-    const post = await prisma.post.upsert({
-      where: { slug },
-      update: { title, content, hash, summary, trail, line },
-      create: { slug, title, content, summary, hash, trail, line },
+    const trailDoc = await prisma.trail.upsert({
+      where: { slug: trail.slug },
+      update: { title: trail.title },
+      create: {
+        slug: trail.slug,
+        title: trail.title,
+        order: trail.order
+      },
     });
 
-    console.log(`✅ Post sincronizado: ${slug}`);
-    res.json(post);
+    const lineDoc = await prisma.line.upsert({
+      where: {
+        slug_trailId: {
+          slug: line.slug,
+          trailId: trailDoc.id
+        }
+      },
+      update: { order: line.order },
+      create: {
+        slug: line.slug,
+        title: line.title,
+        order: line.order,
+        trailId: trailDoc.id,
+      },
+    });
+
+    const postDoc = await prisma.post.upsert({
+      where: {
+        slug_lineId: {
+          slug: slug,
+          lineId: lineDoc.id
+        }
+      },
+      update: {
+        title,
+        content,
+        hash,
+        summary,
+        order,
+        lineId: lineDoc.id
+      },
+      create: {
+        slug,
+        title,
+        content,
+        summary,
+        hash,
+        order,
+        lineId: lineDoc.id
+      },
+    });
+
+    res.json(postDoc);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Erro ao salvar o post." });
+    res.status(500).json({ error: "Falha na sincronização relacional." });
   }
 });
 

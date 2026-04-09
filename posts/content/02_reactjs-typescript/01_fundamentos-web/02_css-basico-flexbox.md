@@ -1,7 +1,7 @@
 ---
 title: "CSS básico + Flexbox"
-trail: "ReactJS + TS"
-line: "Fundamentos"
+trail: "ReactJS + Typescript"
+line: "Fundamentos Web"
 summary: "Domine o design web: entenda o Box Model para controlar espaços e o Flexbox para alinhar elementos com precisão e criar layouts responsivos."
 ---
 ## Estação 02 
