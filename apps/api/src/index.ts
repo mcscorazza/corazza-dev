@@ -31,6 +31,16 @@ app.get("/api/posts", async (req, res) => {
   }
 });
 
+app.get('/api/lines/:lineName', async (req, res) => {
+  const { lineName } = req.params;
+  const posts = await prisma.post.findMany({
+    where: { line: lineName },
+    orderBy: { createdAt: 'asc' },
+    select: { title: true, slug: true }
+  });
+  res.json(posts);
+});
+
 app.get("/api/posts/:slug", async (req, res) => {
   const { slug } = req.params;
   const post = await prisma.post.findUnique({ where: { slug } });

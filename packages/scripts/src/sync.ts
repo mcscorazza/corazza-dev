@@ -77,7 +77,7 @@ while ((match = imageRegex.exec(content)) !== null) {
   const fileName = sanitizedName;
   const destPath = path.join(ASSETS_DESTINATION, fileName);
 
-  console.log(`🔍 Tentando processar: ${rawFileName}`);
+  //console.log(`🔍 Tentando processar: ${rawFileName}`);
 
   if (await fs.pathExists(sourcePath)) {
     await fs.copy(sourcePath, destPath);
@@ -87,9 +87,9 @@ while ((match = imageRegex.exec(content)) !== null) {
     
     newContent = newContent.split(fullMatch).join(newImageMarkdown);
     
-    console.log(`✅ SUCESSO: [${rawFileName}] -> [${fileName}${tag ? '#' + tag : ''}]`);
+    //console.log(`✅ SUCESSO: [${rawFileName}] -> [${fileName}${tag ? '#' + tag : ''}]`);
   } else {
-    console.error(`❌ ERRO: Arquivo não encontrado em: ${sourcePath}`);
+    //console.error(`❌ ERRO: Arquivo não encontrado em: ${sourcePath}`);
   }
 }
 
@@ -104,7 +104,7 @@ function sanitizeFilename(filename: string) {
     .replace(/[^a-zA-Z0-9.\-_]/g, "") // Remove lixo
     .toLowerCase();
   
-  console.log(`   DEBUG Sanitização: ${filename} -> ${clean}`);
+  //console.log(`   DEBUG Sanitização: ${filename} -> ${clean}`);
   return clean;
 }
 
