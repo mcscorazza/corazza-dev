@@ -1,7 +1,7 @@
 ---
-title: "JavaScript ES6+: A Base Moderna para o React"
+title: "JavaScript ES6+"
 trail: "ReactJS + TS"
-line: "Fundamentos"
+line: "Fundamentos Web"
 summary: "Abandone o var! Domine let, const, arrow functions, desestruturação e spread. O JavaScript moderno que você precisa antes de entrar no React."
 ---
 ## Estação 04

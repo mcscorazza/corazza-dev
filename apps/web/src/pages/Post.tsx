@@ -51,7 +51,7 @@ export function PostPage() {
   if (!currentPost) return <div className="p-10 text-center">Carregando post...</div>;
 
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[256px_1fr_256px] gap-12 px-6 py-12">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[256px_1fr_256px]">
 
       <aside className="w-64 hidden lg:block sticky top-24 h-fit">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
@@ -65,7 +65,7 @@ export function PostPage() {
               linePosts.findIndex(x => x.slug === currentPost.slug);
 
             return (
-              <div key={p.slug} className="mb-8 ml-6 relative">
+              <div key={p.slug} className="mb-4 ml-6 relative">
                 <div className={`absolute -left-[36px] top-1 w-4 h-4 rounded-full border-2 bg-white 
                 ${isCurrent ? 'border-violet-600 scale-125' : 'border-slate-900'}`}
                 />
@@ -84,7 +84,7 @@ export function PostPage() {
         </div>
       </aside>
 
-      <article className="prose prose-slate lg:prose-xl max-w-none w-[680px] bg-white p-4">
+      <article className="prose prose-slate lg:prose-xl max-w-1fr mx-auto w-full bg-white p-8">
         <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block">
           ← Voltar para a lista
         </Link>
@@ -163,7 +163,7 @@ export function PostPage() {
         </div>
       </article>
 
-      <aside className="w-[280px] hidden lg:block sticky top-24 h-fit">
+      <aside className="w-64 hidden lg:block sticky top-24 h-fit">
         <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
           Explorar Conteúdo
         </h3>

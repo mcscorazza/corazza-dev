@@ -1,16 +1,16 @@
 ---
-title: Matrizes e os Fundamentos da Álgebra Linear
-trail: Roadmap DS + ML
-line: Fundamentos
-summary: 'Introdução aos fundamentos de Matrizes e Vetores em Álgebra Linear'
+title: "Vetores e Matrizes"
+trail: "Data Science"
+line: "Fundamentos"
+summary: "Fundamentos de Algebra Linear"
 ---
 
+## Estação 01
+> Matrizes e os Fundamentos da Álgebra Linear</small>
 
 ### 1. A Passagem do Escalar para o Multidimensional
 
 Desde os nossos primeiros anos na escola, somos treinados para pensar no mundo em termos de **escalares**. Um escalar é simplesmente um número único. Ele representa uma única dimensão de informação: a temperatura de uma sala (25°C), a sua idade (30 anos), o preço de um apartamento (R$ 500.000), e por aí segue.
-
-![Fig. 1.1 - Escalar (0D)](../../assets/fig_1-1.png#small)
 
 Para problemas simples os escalares são suficientes. No entanto, o mundo real — e especialmente o mundo dos dados — as informações raramente são contidas em uma única dimensão.
 
@@ -19,8 +19,6 @@ Imagine que você quer prever o preço de um imóvel. Apenas a "área" (120m²) 
 #### O Vetor: Uma Lista com Direção
 
 Geometricamente, um vetor é frequentemente ensinado como uma "seta" com magnitude e direção. Mas, em Ciência de Dados, a definição mais útil é a de uma **lista ordenada de números**. Se o nosso imóvel tem 4 características, o perfil dele pode ser representado por um vetor de 4 dimensões (um array 1D):
-
-![Fig. 1.2 - Vetor (1D)](../../assets/fig_1-2.png#small)
 
 
 Cada posição neste vetor tem um significado estrito (Área, Quartos, Idade, Distância do Metrô). A ordem importa. O computador não sabe o que é um "quarto"; ele só sabe que o índice 1 do vetor guarda um valor específico.
@@ -33,7 +31,6 @@ Um vetor descreve um único objeto. Mas e se você for uma imobiliária analisan
 
 Se cada coluna representar uma característica (_feature_) e cada linha representar um imóvel diferente, teremos uma matriz onde conseguimos enxergar o estado de todo o portfólio simultaneamente:
 
-![Fig. 1.3 - Matriz (2D)](../../assets/fig_1-3.png#small)
 
 A beleza dessa passagem do escalar para a matriz é **o poder da escala**. Quando a inteligência artificial precisa aprender padrões de preços, ela não analisa um imóvel de cada vez; ela aplica a matemática sobre o "bloco" inteiro da matriz de uma só vez.
 
@@ -43,7 +40,6 @@ Para finalizar nossa escalada dimensional, vale a pena olhar para o horizonte. S
 
 Nós chamamos essa estrutura de **Tensor** (3D ou mais). Se você já ouviu falar de bibliotecas de Deep Learning como o _TensorFlow_, o nome vem exatamente daqui. Imagens coloridas, por exemplo, são tensores 3D: elas têm altura, largura e três "matrizes" empilhadas representando as cores Vermelho, Verde e Azul (RGB).
 
-![Fig. 1.4 - Tensor (3D)](../../assets/fig_1-4.png#small)
 
 ### 2. A Anatomia das Operações Matemáticas
 
@@ -62,8 +58,6 @@ O Produto Escalar é, sem exagero, uma das operações mais importantes em toda 
 Imagine que você quer calcular o "Score de Risco" de um cliente baseado no histórico dele. Você tem o vetor do cliente (idade, renda, dívidas) e um "Vetor de Pesos", que define o grau de importância de cada característica.
 
 O Produto Escalar multiplica cada item correspondente e soma tudo em um único valor final:
-
-![Fig. 1.5 - Produto Escalar](../../assets/fig_1-5.png#small)
 
 O score desse cliente é 4015. É exatamente assim que os "neurônios" em uma Rede Neural Artificial processam a informação!
 
@@ -156,12 +150,10 @@ print(f"O NumPy foi {low_time / fast_time:.0f}x mais rápido!")
 Saída (os valores variam de acordo com a capacidade de processamento de cada computador):
 
 ```bash
-Tempo com Loop For: 1.4612 segundos
+Tempo com Loop For: 1.4612 segundos                                                                                             
 Tempo com Vetorização: 0.0044 seg
 O NumPy foi 335x mais rápido!
 ```
-
-
 
 ### Conexões para a Próxima Estação
 
