@@ -10,10 +10,10 @@ summary: "Data Frames e Series"
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
+| Palavras:         |                         ~1.320 |
 | Tempo de leitura: |                          7 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | `44.4% [■■■■■■■■■-----------]` |
 
 ### 1. O Abismo Entre a Matemática e o Negócio
 

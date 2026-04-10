@@ -10,10 +10,10 @@ summary: "Entropia e Ganho de Informação"
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
+| Palavras:         |                         ~1.330 |
 | Tempo de leitura: |                          7 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | `38.9% [■■■■■■■■------------]` |
 
 ### 1. O Paradoxo da Coluna Inútil
 

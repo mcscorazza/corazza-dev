@@ -8,12 +8,12 @@ summary: "Domine o CSS Grid e a arquitetura bidimensional. Aprenda a desenhar la
 # Estação 03
 ## CSS Grid e a Arquitetura Bidimensional
 
-| RESUMO            |                              |
-| :---------------- | ---------------------------: |
-| Palavras:         |                       ~1.300 |
-| Tempo de leitura: |                        6 min |
-| Linha             |               01 Fundamentos |
-| Progresso:        | `[■■■-----------------] 17%` |
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.300 |
+| Tempo de leitura: |                          6 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `16.7% [■■■-----------------]` |
 
 Na estação anterior, você conheceu o Flexbox e descobriu como ele resolveu os maiores traumas do alinhamento web. Se o Flexbox é tão poderoso, por que precisamos de outra ferramenta de layout? A resposta está na dimensionalidade.
 

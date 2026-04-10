@@ -12,7 +12,7 @@ summary: "Abandone o var! Domine let, const, arrow functions, desestruturação 
 | Palavras:         |                         ~1.400 |
 | Tempo de leitura: |                          7 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | `22.2% [■■■■----------------]` |
 
 Nas três primeiras estações, nós cuidamos da carroceria e da pintura do nosso vagão usando HTML e CSS. Construímos uma interface semântica, acessível e perfeitamente alinhada com Flexbox e Grid. Mas um vagão sem tração e sem sistemas de controle é apenas uma caixa parada nos trilhos. Chegou a hora de dar partida no motor: o **JavaScript**.
 
@@ -29,9 +29,9 @@ Por décadas, a única forma de declarar variáveis era usando a palavra-chave `
 O ES6 resolveu isso introduzindo o **escopo de bloco** com `let` e `const`.
 
 - **`const` (Constante):** É a declaração padrão do desenvolvedor moderno. Uma vez que você atribui um valor a um `const`, a _referência_ dessa variável não pode ser reatribuída. Se você está criando a URL de uma API, declarando um componente React ou instanciando uma biblioteca, use `const`.
-    
+  
 - **`let` (Variável Mutável):** Use _apenas_ quando você tem certeza absoluta de que o valor da variável precisará mudar durante a execução do código (por exemplo, um contador dentro de um loop, ou uma variável de velocidade que é atualizada a cada segundo).
-    
+  
 
 ```javascript
 // Exemplo prático de processamento de dados

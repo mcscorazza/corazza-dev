@@ -10,10 +10,10 @@ summary: "O Teorema CAP"
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
-| Tempo de leitura: |                          7 min |
+| Palavras:         |                         ~1.260 |
+| Tempo de leitura: |                          6 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | `27.8% [■■■■■■--------------]` |
 
 ### 1. O Fim da Zona de Conforto
 

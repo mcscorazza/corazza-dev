@@ -7,12 +7,12 @@ summary: "Domine o design web: entenda o Box Model para controlar espaços e o F
 # Estação 02 
 ## CSS Básico, Box Model e o Poder do Flexbox
 
-| RESUMO            |                              |
-| :---------------- | ---------------------------: |
-| Palavras:         |                       ~1.400 |
-| Tempo de leitura: |                        7 min |
-| Linha             |               01 Fundamentos |
-| Progresso:        | `[■■------------------] 11%` |
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `11.1% [■■------------------]` |
 
 Na Estação 1, nós construímos os alicerces lógicos da nossa aplicação usando HTML Semântico. Erguemos as paredes, definimos onde ficam as portas e criamos um ambiente estruturado que navegadores e robôs conseguem entender. Mas se abrirmos essa página agora, ela se parecerá com um documento cru da década de 90.
 
@@ -31,13 +31,13 @@ Mesmo que você crie um botão perfeitamente redondo usando `border-radius: 50%`
 Cada "caixa" HTML é composta por quatro camadas concêntricas, de dentro para fora:
 
 1. **Content (Conteúdo):** O núcleo da caixa. É o tamanho real do seu texto, imagem ou vídeo.
-    
+   
 2. **Padding (Preenchimento):** O espaço em branco _dentro_ da caixa, entre o conteúdo e a borda. Pense no padding como o "respiro" interno do elemento. É o padding que impede que o texto de um botão encoste nas bordas.
-    
+   
 3. **Border (Borda):** A linha que envolve o padding e o conteúdo. Pode ser visível (colorida) ou invisível.
-    
+   
 4. **Margin (Margem):** O espaço em branco _fora_ da caixa. É a margem que empurra os outros elementos para longe. Margens não têm cor de fundo, são sempre transparentes.
-    
+   
 
 #### O Maior "Pega-Ratão" do CSS: O Box-Sizing
 
@@ -79,29 +79,30 @@ Para dominar o Flexbox, você precisa entender quatro propriedades principais qu
 **1. `flex-direction` (A Direção dos Trilhos)** Define para qual lado os itens vão fluir.
 
 - `row` (Padrão): Os itens ficam lado a lado, da esquerda para a direita.
-    
+  
 - `column`: Os itens ficam empilhados, de cima para baixo.
-    
+  
 
 **2. `justify-content` (Alinhamento no Eixo Principal)** Se o seu `flex-direction` for `row`, esta propriedade alinha os itens horizontalmente. Se for `column`, alinha verticalmente.
 
 - `flex-start`: Agrupa tudo no começo.
-    
+  
 - `center`: Centraliza os itens (o fim de uma era de dores de cabeça!).
-    
+  
 - `space-between`: Joga o primeiro item para uma ponta, o último para a outra ponta, e divide o espaço vazio igualmente entre os itens do meio. (Perfeito para cabeçalhos com "Logo" de um lado e "Menu" do outro).
-    
+  
 
 **3. `align-items` (Alinhamento no Eixo Transversal)** Se o `justify-content` trata do eixo principal, o `align-items` lida com o eixo oposto. Se você está em uma linha (`row`), o `align-items` decide se os itens ficam no topo, centralizados verticalmente ou esticados para ocupar toda a altura.
 
 - `stretch` (Padrão): Estica os itens para preencher o contêiner.
-    
+  
 - `center`: Centraliza verticalmente.
-    
+  
+
 **4. `gap` (O Respiro Moderno)** Antigamente, para dar espaço entre botões numa linha, usávamos `margin-right` no primeiro botão. O problema é que o último botão também recebia uma margem inútil que quebrava o layout. A propriedade `gap` resolve isso elegantemente, criando um espaço _apenas entre_ os elementos.
 
 - `gap: 16px;` ou `gap: 1rem;`
-   
+  
 
 ### Na Prática: Construindo um Card de Telemetria
 

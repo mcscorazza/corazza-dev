@@ -10,10 +10,10 @@ summary: "OLAP e a Filosofia dos Cubos de Dados"
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
-| Tempo de leitura: |                          7 min |
+| Palavras:         |                         ~1.140 |
+| Tempo de leitura: |                          6 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | `55.6% [■■■■■■■■■■■---------]` |
 
 ### 1. O Conflito Entre a Operação e a Estratégia
 

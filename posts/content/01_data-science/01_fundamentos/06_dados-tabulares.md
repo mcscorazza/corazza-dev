@@ -8,12 +8,12 @@ summary: "Dados Tabulares"
 # Estação 06
 ## Dados Tabulares
 
-| RESUMO            |                                |
-| :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
-| Tempo de leitura: |                          7 min |
-| Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| RESUMO            |                                 |
+| :---------------- | ------------------------------: |
+| Palavras:         |                          ~1.040 |
+| Tempo de leitura: |                           5 min |
+| Linha             |                  01 Fundamentos |
+| Progresso:        | `33.3% [■■■■■■■--------------]` |
 
 ### 1. O Triunfo da Simplicidade
 

@@ -10,10 +10,10 @@ summary: "Sharding e Particionamento Horizontal"
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
+| Palavras:         |                         ~1.420 |
 | Tempo de leitura: |                          7 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | `50.0% [■■■■■■■■■■----------]` |
 
 ### 1. O Limite Físico do Hardware
 

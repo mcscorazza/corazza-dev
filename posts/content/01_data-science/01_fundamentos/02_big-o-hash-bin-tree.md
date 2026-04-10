@@ -10,10 +10,10 @@ summary: "Big O, Hash Tables e Árvores Binárias"
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
-| Tempo de leitura: |                          7 min |
+| Palavras:         |                         ~1.330 |
+| Tempo de leitura: |                          6 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | `11.1% [■■------------------]` |
 
 ### 1. O Problema da Agulha no Palheiro e o Gargalo de Leitura
 

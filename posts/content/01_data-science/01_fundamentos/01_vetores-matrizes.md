@@ -10,10 +10,10 @@ summary: "Fundamentos de Algebra Linear"
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
-| Palavras:         |                         ~1.400 |
-| Tempo de leitura: |                          7 min |
+| Palavras:         |                         ~1.820 |
+| Tempo de leitura: |                          9 min |
 | Linha             |                 01 Fundamentos |
-| Progresso:        | `[■■■■----------------] 22.2%` |
+| Progresso:        | ` 5.6% [■-------------------]` |
 
 ### 1. A Passagem do Escalar para o Multidimensional
 
