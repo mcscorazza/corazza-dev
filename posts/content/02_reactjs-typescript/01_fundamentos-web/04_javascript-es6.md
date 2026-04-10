@@ -4,8 +4,8 @@ trail: "ReactJS + TS"
 line: "Fundamentos Web"
 summary: "Abandone o var! Domine let, const, arrow functions, desestruturação e spread. O JavaScript moderno que você precisa antes de entrar no React."
 ---
-## Estação 04
-### JavaScript ES6+ e a Modernização do Motor
+# Estação 04
+## JavaScript ES6+ e a Modernização do Motor
 
 | RESUMO            |                                |
 | :---------------- | -----------------------------: |
@@ -21,6 +21,7 @@ O JavaScript nasceu em 1995 com a missão simples de adicionar pequenas interati
 Isso mudou drasticamente em 2015, com o lançamento do **ECMAScript 6 (ES6)**. Foi a maior e mais profunda atualização da história da linguagem, transformando o JS em uma ferramenta madura e pronta para arquiteturas complexas. O ecossistema React é inteiramente construído sobre esses pilares. Se você tentar escrever React usando a sintaxe antiga do JavaScript, terá uma experiência terrível.
 
 Nesta estação, vamos dominar os recursos do ES6+ que você usará todos os dias, tanto no front-end quanto no back-end com Node.js.
+
 ### 1. O Fim do `var`: Bem-vindos `let` e `const`
 
 Por décadas, a única forma de declarar variáveis era usando a palavra-chave `var`. O grande problema do `var` é que ele não respeita blocos lógicos (como um `if` ou um `for`), ele vaza para fora deles. Isso causava bugs terríveis de sobrescrita de dados.
