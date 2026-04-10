@@ -14,44 +14,43 @@ p {
   text-align: justify;
 }
 
-.prose h1, h2, h3, h4, h5 {
+.prose h1,
+h2,
+h3,
+h4,
+h5 {
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
 
-.prose h2 {
-  text-align: center;
+.prose h1 {
   font-size: 1.75em;
+  line-height: 2em;
+  margin: 0;
   font-weight: 900;
 }
 
-.prose  h3 {
+.prose h2 {
+  border-top: 1px solid #ddd;
+  font-size: 1.4em;
+  font-weight: 700;
+  line-height: 1.5em;
+  font-style: italic;
+  margin: 0;
+}
+
+.prose h3 {
   font-size: 1.2em;
 }
 
-.prose  h4 {
+.prose h4 {
   font-size: 1.1em;
 }
 
-.prose  h5 {
+.prose h5 {
   font-size: 1em;
 }
 
-.prose blockquote {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  border-left: none;
-  margin: 0 auto;
-  padding: 0;
-  font-size: 1.4em;
-  height: 1.8em;
-  font-style: normal;
-  font-weight: 700;
-}
 
 
 .prose pre {

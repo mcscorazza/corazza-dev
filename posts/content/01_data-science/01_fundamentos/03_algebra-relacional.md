@@ -5,8 +5,15 @@ line: "Fundamentos"
 summary: "Álgebra Relacional e Bancos de Dados"
 ---
 
-## Estação 03
-> Álgebra Relacional e Bancos de Dados
+# Estação 03
+## Álgebra Relacional e Bancos de Dados
+
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
 
 ### 1. A Ilusão da Planilha Gigante e a Crise da Redundância
 
@@ -79,7 +86,7 @@ Vamos simular o cenário de um e-commerce. Criaremos duas tabelas fragmentadas (
 
 
 
-```Python
+```python
 import pandas as pd
 
 # 1. Criando as entidades separadas (Simulando o Banco de Dados)

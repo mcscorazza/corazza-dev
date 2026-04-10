@@ -4,17 +4,15 @@ trail: "ReactJS + Typescript"
 line: "Fundamentos Web"
 summary: "Domine o design web: entenda o Box Model para controlar espaços e o Flexbox para alinhar elementos com precisão e criar layouts responsivos."
 ---
-## Estação 02 
-### CSS Básico, Box Model e o Poder do Flexbox
+# Estação 02 
+## CSS Básico, Box Model e o Poder do Flexbox
 
----
-
-|RESUMO| |
-|:---|---:|
-|Palavras:| ~1.400| 
-|Tempo de leitura:| 7 min|
-| Linha | 01 Fundamentos |
-|Progresso:|`[■■------------------] 11%`|
+| RESUMO            |                              |
+| :---------------- | ---------------------------: |
+| Palavras:         |                       ~1.400 |
+| Tempo de leitura: |                        7 min |
+| Linha             |               01 Fundamentos |
+| Progresso:        | `[■■------------------] 11%` |
 
 Na Estação 1, nós construímos os alicerces lógicos da nossa aplicação usando HTML Semântico. Erguemos as paredes, definimos onde ficam as portas e criamos um ambiente estruturado que navegadores e robôs conseguem entender. Mas se abrirmos essa página agora, ela se parecerá com um documento cru da década de 90.
 
@@ -24,7 +22,7 @@ No ecossistema React, você ouvirá falar de muitas ferramentas para lidar com e
 
 Nesta estação, vamos dominar os dois pilares absolutos do design de interfaces modernas: o **Box Model** (Modelo de Caixa) e o **Flexbox**.
 
-#### O Ponto de Partida: O Box Model
+### O Ponto de Partida: O Box Model
 
 Antes de mover qualquer elemento na tela, você precisa aceitar uma verdade universal da web: **absolutamente tudo no HTML é um retângulo**.
 
@@ -41,7 +39,7 @@ Cada "caixa" HTML é composta por quatro camadas concêntricas, de dentro para f
 4. **Margin (Margem):** O espaço em branco _fora_ da caixa. É a margem que empurra os outros elementos para longe. Margens não têm cor de fundo, são sempre transparentes.
     
 
-##### O Maior "Pega-Ratão" do CSS: O Box-Sizing
+#### O Maior "Pega-Ratão" do CSS: O Box-Sizing
 
 Historicamente, o CSS tinha um comportamento contra-intuitivo. Se você definisse uma `div` com `width: 300px`, `padding: 20px` e `border: 2px`, a largura total dessa caixa na tela não seria 300px. Seria 344px! O navegador somava o padding e a borda _além_ da largura definida. Isso quebrava layouts inteiros de forma imprevisível.
 
@@ -57,7 +55,7 @@ Para corrigir isso, a primeira regra de CSS que todo desenvolvedor moderno escre
 
 O `border-box` avisa ao navegador: _"Se eu disser que a largura é 300px, a caixa inteira (incluindo padding e borda) deve ter 300px. Reduza o espaço do conteúdo internamente para fazer tudo caber"_. Isso traz sanidade e previsibilidade matemática ao seu front-end.
 
-#### A Revolução: Introdução ao Flexbox
+### A Revolução: Introdução ao Flexbox
 
 Durante anos, alinhar elementos horizontalmente no CSS era um pesadelo. Desenvolvedores usavam _hacks_ bizarros com `float`, `display: inline-block` e tabelas para tentar colocar dois botões lado a lado ou, o clássico meme da programação: centralizar uma `div` verticalmente.
 
@@ -74,7 +72,7 @@ A mágica começa com uma única linha de código aplicada ao elemento "Pai" (o 
 
 Ao declarar isso, todos os elementos filhos diretos desse contêiner deixam de se comportar como blocos rígidos e passam a ser **Flex Items**.
 
-##### O Kit de Ferramentas Flexbox
+#### O Kit de Ferramentas Flexbox
 
 Para dominar o Flexbox, você precisa entender quatro propriedades principais que se aplicam ao contêiner.
 
@@ -105,7 +103,7 @@ Para dominar o Flexbox, você precisa entender quatro propriedades principais qu
 - `gap: 16px;` ou `gap: 1rem;`
    
 
-#### Na Prática: Construindo um Card de Telemetria
+### Na Prática: Construindo um Card de Telemetria
 
 Para ver o poder do HTML Semântico (Estação 1) somado ao Box Model e Flexbox (Estação 2), vamos construir um componente muito comum em sistemas complexos: um Card de Dashboard de Telemetria, útil para monitorar o status de uma máquina, de um servidor ou, digamos, os dados de monitoramento de um vagão ferroviário.
 
@@ -190,7 +188,7 @@ Queremos um card que tenha um cabeçalho (com o ID do vagão e um badge de statu
 
 Analise o código acima. Não há _floats_, não há cálculos complexos de porcentagem, não há gambiarras com margens negativas. É um layout limpo, legível e completamente responsivo. Se a tela diminuir, o Flexbox cuidará de ajustar o espaço interno dos itens (`flex: 1`) perfeitamente.
 
-#### O Contexto no React
+### O Contexto no React
 
 Quando formos escrever nossos componentes em React (na Estação 11), você não escreverá um arquivo HTML e outro arquivo CSS separados dessa forma. Você usará JSX e provavelmente uma solução como Tailwind (onde `display: flex` vira simplesmente a classe `flex` e `justify-content: space-between` vira `justify-between`).
 
@@ -198,7 +196,7 @@ Contudo, a regra de ouro permanece: **o Tailwind não te ensina Flexbox; ele ape
 
 ---
 
-### Próxima Parada: O Maestro de Duas Dimensões
+## Próxima Parada: O Maestro de Duas Dimensões
 
 O Flexbox é maravilhoso, mas como mencionamos, ele foi criado para layouts de **uma dimensão** (uma linha ou uma coluna por vez). Mas e quando você precisa criar o layout inteiro de uma tela complexa de dashboard, com barra lateral, cabeçalho fixo, área de gráficos principais e painel de controle lateral? Encaixar vários Flexbox um dentro do outro rapidamente se torna uma "sopa de Flex".
 

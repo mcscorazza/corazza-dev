@@ -5,10 +5,17 @@ line: "Fundamentos"
 summary: "Entropia e Ganho de Informação"
 ---
 
-## Estação 07
-> Entropia e Ganho de Informação
+# Estação 07
+## Entropia e Ganho de Informação
 
-## 1. O Paradoxo da Coluna Inútil
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
+
+### 1. O Paradoxo da Coluna Inútil
 
 Na Estação 06, aprendemos a organizar nossos dados com perfeição geométrica. Construímos o _Tidy Data_: uma tabela linda onde cada coluna é uma variável e cada linha é uma observação.
 
@@ -20,7 +27,7 @@ Se você olhar para a coluna "Planeta de Residência", 100% das linhas estarão 
 
 Para o algoritmo de Machine Learning, nós precisamos de uma forma matemática de olhar para uma coluna e perguntar: _"Quanta incerteza, quanta bagunça e quanta surpresa existe aqui?"_ A resposta para isso é o conceito mais profundo da Teoria da Informação: a **Entropia**.
 
-## 2. A Física Encontra os Dados: O Que é Entropia?
+### 2. A Física Encontra os Dados: O Que é Entropia?
 
 O termo "Entropia" nasceu na Termodinâmica (a física do calor) para medir o grau de desordem de um sistema. Um copo de vidro intacto tem baixa entropia. Se ele cair no chão e estilhaçar em mil pedaços, a sua entropia (desordem) vai ao máximo.
 
@@ -35,7 +42,7 @@ Vamos usar a intuição com um jogo de cara ou coroa:
 
 O trabalho de um modelo de Machine Learning é exatamente este: pegar um banco de dados com alta entropia (onde não sabemos quem vai comprar e quem não vai) e fatiá-lo até encontrar grupos com entropia zero (onde temos 100% de certeza do comportamento).
 
-## 3. A Matemática do Caos
+### 3. A Matemática do Caos
 
 Não confie apenas na intuição; confie no cálculo. A fórmula da Entropia de Shannon (representada pela letra $H$) para um problema de classificação é desenhada para penalizar a incerteza.
 
@@ -58,7 +65,7 @@ $$H(S) = - (0.5 \cdot \log_2(0.5)) - (0.5 \cdot \log_2(0.5)) = 1.0$$
 
 A matemática confirma: um grupo perfeitamente dividido (50/50) tem **Entropia 1** (Caos total). O algoritmo olha para isso e pensa: _"Eu não consigo tomar nenhuma decisão com esse grupo, preciso dividi-lo!"_
 
-## 4. O Ganho de Informação: Como a IA Toma Decisões
+### 4. O Ganho de Informação: Como a IA Toma Decisões
 
 Saber a entropia do banco de dados inteiro é apenas o primeiro passo. A verdadeira mágica acontece quando usamos o **Ganho de Informação** (_Information Gain_).
 
@@ -73,13 +80,13 @@ Imagine que o nosso banco de dados tem a Entropia máxima (1.0). Temos duas colu
 
 O algoritmo então escolhe a coluna "Salário" como a regra principal do seu sistema. Ele aprendeu sozinho o que importa, guiado apenas pela busca incessante por reduzir a Entropia.
 
-## 5. Na Prática: Calculando o Caos em Python
+### 5. Na Prática: Calculando o Caos em Python
 
 Em vez de usar uma biblioteca mágica que faz tudo sozinha, vamos ser cientistas. Vamos escrever a matemática da Entropia do zero em Python usando o `NumPy` para ver como o caos é medido numa base de dados de clientes.
 
 
 
-```Python
+```python
 import numpy as np
 
 # ---------------------------------------------------------
@@ -127,7 +134,7 @@ Se você executar este código, a matemática será implacável:
 
 _(Nota técnica: O logaritmo de 0 é indefinido na matemática, mas em bibliotecas otimizadas para ML, como o Scikit-Learn, tratamos $0 \cdot \log(0)$ como $0$ para evitar erros no Cenário 3)._
 
-## Conexões para a Próxima Estação
+### Conexões para a Próxima Estação
 
 Compreender a Entropia nos dá um superpoder: a capacidade de avaliar a qualidade da nossa informação. Nós finalmente aprendemos como as máquinas começam a "pensar" e a selecionar quais colunas importam num mar de dados tabulares.
 

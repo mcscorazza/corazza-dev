@@ -5,10 +5,17 @@ line: "Fundamentos"
 summary: "Dados Tabulares"
 ---
 
-## Estação 06
-> Dados Tabulares
+# Estação 06
+## Dados Tabulares
 
-## 1. O Triunfo da Simplicidade
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
+
+### 1. O Triunfo da Simplicidade
 
 Nós passamos pelas últimas estações discutindo bancos de dados complexos, partições de rede e álgebra relacional. Mas, no final do dia, quando um Cientista de Dados extrai a informação do servidor para começar a trabalhar no seu próprio computador, essa informação quase sempre assume uma única forma: **A Tabela**.
 
@@ -16,7 +23,7 @@ Dados Tabulares (_Tabular Data_) são a espinha dorsal da análise de dados e do
 
 Mas não se engane: jogar dados em linhas e colunas não significa que eles estão prontos para uso. Existe uma ciência exata na construção de uma tabela perfeita. Uma tabela mal estruturada pode inutilizar o algoritmo mais avançado de Inteligência Artificial do mundo.
 
-## 2. A Anatomia Estrita de uma Tabela
+### 2. A Anatomia Estrita de uma Tabela
 
 Para que uma grade de números e textos seja considerada "Dado Tabular" pronto para análise, ela precisa obedecer a regras anatômicas rígidas. A comunidade de Ciência de Dados, liderada por estatísticos como Hadley Wickham, cunhou o termo **Tidy Data** (Dados Arrumados) para definir o formato tabular perfeito.
 
@@ -29,7 +36,7 @@ As três regras de ouro do Tidy Data são:
 3. **Cada Valor deve ter sua própria célula:** Não podemos ter uma célula com o texto "São Paulo / 25 Anos". Esses são dois valores distintos que pertencem a duas variáveis diferentes e devem estar em células separadas.
    
 
-## 3. O Inimigo Silencioso: Tabelas de Apresentação vs. Tabelas de Dados
+### 3. O Inimigo Silencioso: Tabelas de Apresentação vs. Tabelas de Dados
 
 O maior choque para iniciantes é descobrir que a maioria das planilhas empresariais construídas no Excel **não são** Dados Tabulares no sentido científico.
 
@@ -56,7 +63,7 @@ Veja o exemplo clássico do formato "Amplo" (_Wide Format_) contra o formato "Lo
 
 Essa estrutura longa é o combustível que os algoritmos de previsão de séries temporais exigem para conseguir "ler" o tempo.
 
-## 4. Como os Dados Tabulares Vivem: CSV vs. Formatos Colunares
+### 4. Como os Dados Tabulares Vivem: CSV vs. Formatos Colunares
 
 Quando exportamos nossos Dados Tabulares, precisamos escolher como o computador vai salvar isso no disco rígido.
 
@@ -66,11 +73,11 @@ O CSV é maravilhoso porque é à prova de balas: qualquer sistema, desde um mai
 
 É por isso que a Ciência de Dados moderna adotou formatos de **Armazenamento Colunar**, como o arquivo **Parquet**. Diferente do CSV, o Parquet salva os dados agrupados por coluna. Quando você pede a "Média de Idade", o computador vai diretamente no bloco do disco rígido onde moram apenas as idades, ignorando os nomes, endereços e históricos de compras. O que levaria minutos no CSV, acontece em milissegundos no formato colunar.
 
-## 5. Na Prática: Limpando a Bagunça com Python
+### 5. Na Prática: Limpando a Bagunça com Python
 
 O processo de transformar uma tabela "suja" de escritório em um "Tidy Data" tabular é uma das habilidades mais valiosas do mercado. Vamos usar o Pandas para pegar aquela tabela ruim (Wide) e transformá-la na tabela perfeita (Long) usando uma função mágica chamada `melt` (derreter).
 
-```Python
+```python
 import pandas as pd
 
 # 1. Recebemos a "Tabela do Chefe" (Meses como colunas)
@@ -103,7 +110,7 @@ print(df_tidy)
 
 Ao executar este código, a matriz "quadrada" se transforma numa estrutura longa e analítica. É exatamente esse DataFrame formatado que alimentaremos nos modelos matemáticos.
 
-## Conexões para a Próxima Estação
+### Conexões para a Próxima Estação
 
 Agora sabemos como arrumar a casa. Temos uma grade bidimensional perfeita onde cada coluna é uma variável matemática e cada linha é um evento do mundo real.
 

@@ -88,16 +88,6 @@ export function PostPage() {
         <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block">
           ← Voltar para a lista
         </Link>
-        {/* 
-        <header className="mb-8">
-          <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">
-            {currentPost.line.trail.title}
-          </span>
-          <h1 className="text-4xl font-extrabold text-slate-900 mt-2">
-            {currentPost.title}
-          </h1>
-        </header> */}
-
         <div className="prose prose-sm prose-blue md:prose-base max-w-full mx-auto font-sans">
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
@@ -181,12 +171,15 @@ export function PostPage() {
               >
                 <button
                   onClick={() => setExpandedTrail(isExpanded ? null : trail.slug)}
-                  className={`w-full text-left p-4 flex flex-col transition-colors ${isExpanded ? 'bg-slate-50' : 'bg-white hover:bg-slate-50'
+                  className={`w-full text-left p-4 flex flex-col transition-colors ${isExpanded ? 'bg-slate-50' : 'bg-white hover:bg-slate-100'
                     }`}
                 >
                   <div className="flex justify-between items-start">
                     <h4 className={`font-bold text-sm ${isCurrentTrail ? 'text-violet-600' : 'text-slate-900'}`}>
-                      {trail.title}
+                      <Link
+                        to={`/trail/${trail.slug}`}
+                      >{trail.title}</Link>
+
                     </h4>
                     <span className="text-[10px] text-slate-400">{isExpanded ? '▲' : '▼'}</span>
                   </div>
@@ -198,15 +191,15 @@ export function PostPage() {
                 {isExpanded && (
                   <div className="bg-white p-2 flex flex-col gap-1 border-t border-slate-100">
                     {trail.lines.map((line: any) => {
-                      const isCurrentLine = line.slug === currentPost?.line?.slug;
+                      const isCurrentLine = trail.slug === currentPost?.line?.trail?.slug && line.slug === currentPost?.line?.slug;
 
                       return (
                         <Link
                           key={line.slug}
                           to={`/post/${trail.slug}/${line.slug}/${line.firstPostSlug}`}
                           className={`text-xs p-3 rounded-lg flex items-center justify-between group transition-all ${isCurrentLine
-                              ? 'bg-violet-600 text-white font-bold'
-                              : 'text-slate-600 hover:bg-blue-50 hover:text-blue-600'
+                            ? 'bg-violet-600 text-white font-bold'
+                            : 'text-slate-600 hover:bg-blue-50 hover:text-blue-600'
                             }`}
                         >
                           <span>{line.title}</span>

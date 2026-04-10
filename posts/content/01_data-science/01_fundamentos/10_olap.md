@@ -5,10 +5,17 @@ line: "Fundamentos"
 summary: "OLAP e a Filosofia dos Cubos de Dados"
 ---
 
-## Estação 10
-> OLAP e a Filosofia dos Cubos de Dados
+# Estação 10
+## OLAP e a Filosofia dos Cubos de Dados
 
-## 1. O Conflito Entre a Operação e a Estratégia
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
+
+### 1. O Conflito Entre a Operação e a Estratégia
 
 Na Estação 09, nós salvamos o nosso sistema da sobrecarga usando o *Sharding*. Distribuímos o banco de dados em vários servidores para que o aplicativo do cliente nunca trave na hora de realizar uma compra ou registrar um clique.
 
@@ -20,7 +27,7 @@ Se você tentar rodar essa consulta matemática massiva diretamente no banco de 
 
 O banco de dados que atende o cliente **não pode** ser o mesmo banco de dados que atende o CEO. É aqui que a Ciência de Dados e a Engenharia de Software bifurcam, e nós entramos no domínio do **OLAP (Online Analytical Processing)**.
 
-## 2. O Universo OLAP: Congelando o Tempo
+### 2. O Universo OLAP: Congelando o Tempo
 
 OLAP é o oposto do OLTP. Enquanto o OLTP lida com o "agora" (Transações), o OLAP lida com o "passado" (Análise).
 
@@ -28,7 +35,7 @@ Para criar um ambiente OLAP, os Engenheiros de Dados fazem cópias periódicas d
 
 Nesse armazém, os dados não mudam mais. Um pedido feito em 2021 não sofrerá mais atualizações de endereço. Ele está historicamente congelado. Como os dados são estáticos, os Cientistas e Analistas de Dados podem executar cálculos matemáticos devastadores, agrupamentos complexos e testes de hipóteses na base inteira sem o menor risco de derrubar o aplicativo da empresa.
 
-## 3. A Fuga da Segunda Dimensão: O Cubo de Dados
+### 3. A Fuga da Segunda Dimensão: O Cubo de Dados
 
 Até agora, pensamos em dados como tabelas bidimensionais (linhas e colunas). Mas tabelas 2D são péssimas para a mente humana analisar cruzamentos complexos.
 
@@ -49,15 +56,13 @@ Quando você organiza os dados dessa forma, você destrava as quatro operações
 
 Essa flexibilidade dimensional é o que permite a criação de *Dashboards* interativos (como os do Power BI ou Tableau) onde o usuário clica e a tela se reconfigura instantaneamente.
 
-## 4. Na Prática: Construindo e Fatiando um "Cubo" em Python
+### 4. Na Prática: Construindo e Fatiando um "Cubo" em Python
 
 O `pandas` possui uma ferramenta maravilhosa para simular operações OLAP diretamente na memória: as Tabelas Dinâmicas (`pivot_table`). Ela permite pegar dados transacionais planos (estilo OLTP) e transformá-los em agregações multidimensionais num piscar de olhos.
 
 Vamos simular o pedido do CEO e usar o Python para fazer operações de *Roll-up* e *Slice*.
 
-Python
-
-```
+```python
 import pandas as pd
 import numpy as np
 
@@ -111,7 +116,7 @@ print(rollup_total)
 
 Ao executar este código, você verá a tabela longa se transformar numa matriz de inteligência de negócios. É exatamente esse pré-processamento rápido que alimenta os gráficos que os executivos adoram analisar.
 
-## Conexões para a Próxima Estação
+### Conexões para a Próxima Estação
 
 O conceito de OLAP nos mostrou *o que* fazer com os dados para gerar estratégia: transformá-los em dimensões e medidas. Mas, do ponto de vista da arquitetura de software, como desenhamos as tabelas no banco de dados para que elas formem esse "cubo" de maneira eficiente?
 

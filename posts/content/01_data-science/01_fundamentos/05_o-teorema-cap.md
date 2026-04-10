@@ -5,10 +5,17 @@ line: "Fundamentos"
 summary: "O Teorema CAP"
 ---
 
-## Estação 05
-> O Teorema CAP
+# Estação 05
+## O Teorema CAP
 
-## 1. O Fim da Zona de Conforto
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
+
+### 1. O Fim da Zona de Conforto
 
 Nas estações anteriores, construímos um mundo perfeito. Aprendemos a organizar dados em matrizes, estruturá-los em Tabelas Hash para buscas instantâneas e dividi-los usando a Álgebra Relacional para evitar redundâncias.
 
@@ -20,7 +27,7 @@ A solução lógica é óbvia: **Sistemas Distribuídos**. Vamos colocar dezenas
 
 Parece o plano perfeito. Até que a física e a matemática cobrem o seu preço.
 
-## 2. O Triângulo Impossível
+### 2. O Triângulo Impossível
 
 No ano 2000, o cientista da computação Eric Brewer apresentou um conceito que mudaria para sempre a engenharia de software: **O Teorema CAP**. Ele provou que, em um sistema de dados distribuído, é matematicamente impossível garantir três propriedades simultaneamente. Você só pode escolher duas.
 
@@ -33,7 +40,7 @@ As três propriedades são:
 - **P - Partition Tolerance (Tolerância a Partições):** O sistema continua funcionando mesmo que a comunicação (a rede) entre os servidores seja cortada.
   
 
-## 3. A Dura Realidade: Você só Escolhe Entre C e A
+### 3. A Dura Realidade: Você só Escolhe Entre C e A
 
 Quando você olha para o triângulo CAP, parece que você pode escolher a combinação CA (Consistente e Disponível). **Isso é um mito de laboratório.**
 
@@ -41,33 +48,33 @@ No mundo real, cabos de rede rompem, roteadores travam e satélites falham. A "P
 
 Portanto, quando a comunicação entre o Servidor A e o Servidor B for cortada, você, como Cientista ou Engenheiro de Dados, tem uma decisão arquitetural terrível a tomar:
 
-### A Escolha CP (Consistência + Tolerância a Partição)
+#### A Escolha CP (Consistência + Tolerância a Partição)
 
 A rede caiu. O Servidor A recebeu uma atualização de saldo bancário, mas não consegue avisar o Servidor B. Se você escolheu um sistema **CP**, o Servidor B vai **recusar** qualquer tentativa de saque ou leitura de clientes na região dele. Ele prefere retornar um erro (sacrificando a Disponibilidade) a correr o risco de mostrar um saldo desatualizado e permitir que um cliente gaste um dinheiro que não tem.
 
 - **Quem usa:** Bancos de dados relacionais tradicionais, sistemas financeiros, controle de estoque crítico.
   
 
-### A Escolha AP (Disponibilidade + Tolerância a Partição)
+#### A Escolha AP (Disponibilidade + Tolerância a Partição)
 
 A rede caiu. O Servidor A recebeu o novo "Status de Relacionamento" de um usuário, mas não consegue avisar o B. Se você escolheu um sistema **AP**, o Servidor B vai aceitar o fato de estar isolado e continuará respondendo aos usuários mostrando o status antigo. Ele prefere mostrar uma informação desatualizada (sacrificando a Consistência) a deixar o aplicativo fora do ar. Quando a rede voltar, eles sincronizam (um conceito chamado _Consistência Eventual_).
 
 - **Quem usa:** Redes sociais (ninguém morre se vir um _like_ atrasado), catálogos de produtos da Amazon, bancos de dados NoSQL como Cassandra ou DynamoDB.
   
 
-## 4. O Impacto no E-commerce: Por que o "Carrinho" Nunca Trava?
+### 4. O Impacto no E-commerce: Por que o "Carrinho" Nunca Trava?
 
 A Amazon é o estudo de caso perfeito para o CAP. O catálogo de produtos e o carrinho de compras são sistemas intensamente **AP** (Disponibilidade). A regra de ouro é: "Nunca impeça um cliente de colocar um item no carrinho".
 
 Mesmo que a rede caia e o sistema não saiba se ainda há estoque daquele livro, o carrinho aceita a adição (Disponibilidade acima de tudo). Somente no exato momento do checkout financeiro é que o sistema transita para um modelo **CP** rigoroso, travando a operação se não puder confirmar o pagamento e o estoque com 100% de certeza em todos os nós da rede.
 
-## 5. Na Prática: Simulando o Dilema CAP em Python
+### 5. Na Prática: Simulando o Dilema CAP em Python
 
 Bancos de dados comerciais têm milhões de linhas de código para gerenciar isso. Mas a lógica central pode ser demonstrada em um script simples. Vamos criar dois "Servidores" e simular um corte de rede (Partição) para ver como um sistema escolhe entre falhar (CP) ou mentir (AP).
 
 
 
-```Python
+```python
 class NoBancoDeDados:
     def __init__(self, nome):
         self.nome = nome
@@ -128,7 +135,7 @@ print("Temos dados divergentes! O sistema precisará se resolver no futuro.")
 
 Rodando esse código, a teoria sai do abstrato. Você verá que o modo **CP** prefere o erro e a paralisação (segurança), enquanto o modo **AP** abraça o caos e cria realidades paralelas entre os servidores (disponibilidade fluida).
 	
-## Conexões para a Próxima Estação
+### Conexões para a Próxima Estação
 
 Compreender o Teorema CAP é a linha que separa um estudante que apenas sabe "fazer selects" de um Arquiteto de Dados Sênior. Agora que entendemos como os dados podem (e devem) assumir diferentes comportamentos em escala global, é hora de olharmos para a estrutura interna deles.
 

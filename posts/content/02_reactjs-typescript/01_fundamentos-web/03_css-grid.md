@@ -5,17 +5,15 @@ line: "Fundamentos Web"
 summary: "Domine o CSS Grid e a arquitetura bidimensional. Aprenda a desenhar layouts responsivos e dashboards complexos usando grid-template-areas."
 ---
 
-## Estação 03
-### CSS Grid e a Arquitetura Bidimensional
+# Estação 03
+## CSS Grid e a Arquitetura Bidimensional
 
----
-
-|RESUMO| |
-|:---|---:|
-|Palavras:| ~1.300| 
-|Tempo de leitura:| 6 min|
-| Linha | 01 Fundamentos |
-|Progresso:|`[■■■-----------------] 17%`|
+| RESUMO            |                              |
+| :---------------- | ---------------------------: |
+| Palavras:         |                       ~1.300 |
+| Tempo de leitura: |                        6 min |
+| Linha             |               01 Fundamentos |
+| Progresso:        | `[■■■-----------------] 17%` |
 
 Na estação anterior, você conheceu o Flexbox e descobriu como ele resolveu os maiores traumas do alinhamento web. Se o Flexbox é tão poderoso, por que precisamos de outra ferramenta de layout? A resposta está na dimensionalidade.
 
@@ -23,7 +21,7 @@ O Flexbox é um mestre **unidimensional**. Ele foi projetado para distribuir ele
 
 Para a macroarquitetura da sua aplicação, nós usamos o **CSS Grid**. Ele é o primeiro e único sistema de layout nativo do CSS criado especificamente para trabalhar com **duas dimensões** simultaneamente.
 
-#### A Regra de Ouro: Grid vs. Flexbox
+### A Regra de Ouro: Grid vs. Flexbox
 
 A dúvida número um de todo desenvolvedor iniciante é: *"Quando uso Flexbox e quando uso Grid?"*. A comunidade adotou uma máxima prática que funciona em 95% dos casos:
 
@@ -36,7 +34,7 @@ Imagine um **Dashboard de Telemetria**.
 
 Eles não são inimigos; são ferramentas complementares. Você construirá a prateleira com o Grid e organizará os livros dentro dela com o Flexbox.
 
-#### Os Fundamentos do Grid
+### Os Fundamentos do Grid
 
 Assim como no Flexbox, tudo começa ativando o comportamento no elemento contêiner (o "pai" dos elementos):
 
@@ -48,7 +46,7 @@ Assim como no Flexbox, tudo começa ativando o comportamento no elemento contêi
 
 Apenas declarar `display: grid` não muda muita coisa visualmente. O verdadeiro poder é destravado quando você começa a desenhar a sua malha usando `grid-template-columns` (para definir as colunas) e `grid-template-rows` (para definir as linhas).
 
-##### A Magia da Fração (`fr`)
+#### A Magia da Fração (`fr`)
 
 No mundo do Grid, ganhamos uma nova unidade de medida exclusiva: o `fr` (Fração). Ele calcula o espaço livre disponível e o divide proporcionalmente. Esqueça ter que calcular porcentagens quebradas como `33.3333%`!
 
@@ -63,7 +61,7 @@ No mundo do Grid, ganhamos uma nova unidade de medida exclusiva: o `fr` (Fraçã
 
 Se você quisesse que a coluna do meio fosse o dobro das outras, bastaria usar: `grid-template-columns: 1fr 2fr 1fr`. O navegador soma as frações (1+2+1 = 4) e distribui o espaço matematicamente sem quebrar o seu layout se você adicionar margens ou gaps.
 
-#### O Padrão Ouro do Layout Declarativo: `grid-template-areas`
+### O Padrão Ouro do Layout Declarativo: `grid-template-areas`
 
 Existem várias formas de posicionar elementos no Grid, mas nenhuma é tão legível, expressiva e impressionante quanto o `grid-template-areas`. Essa propriedade permite que você "desenhe" o seu layout diretamente no CSS usando o que chamamos de *ASCII art* (arte com texto).
 
@@ -120,7 +118,7 @@ Pare por um segundo e leia a propriedade `grid-template-areas`. Você consegue *
 
 Isso não é apenas código elegante; é um código que qualquer desenvolvedor (ou até um designer) entende no momento em que abre o arquivo.
 
-#### Responsividade: O Superpoder do Grid
+### Responsividade: O Superpoder do Grid
 
 No passado, mudar o layout radicalmente do desktop para o mobile exigia escrever dezenas de linhas de CSS manipulando larguras, floats e margens. Com o `grid-template-areas`, adaptar esse dashboard para um smartphone é quase covardia de tão simples.
 
@@ -145,7 +143,7 @@ Usando uma *Media Query* (que avisa o CSS que a tela diminuiu), nós simplesment
 
 Com quatro linhas de código, nós transformamos um dashboard horizontal complexo em uma estrutura verticalizada perfeita para a leitura em celulares. Os elementos no HTML não mudaram de lugar, apenas a malha que os envolve foi reconfigurada.
 
-#### O Piloto Automático: `auto-fit` e `minmax`
+### O Piloto Automático: `auto-fit` e `minmax`
 
 O Grid possui um truque final que o torna imbatível para listagens de itens (como uma galeria de fotos ou um catálogo de vagões de trem). Você pode criar layouts totalmente responsivos **sem usar uma única Media Query**, graças às funções `repeat()`, `auto-fit` e `minmax()`.
 
@@ -161,7 +159,7 @@ O Grid possui um truque final que o torna imbatível para listagens de itens (co
 
 O resultado? Em um monitor ultrawide, você verá 5 cards por linha. Num notebook, 3 cards. Num celular, o grid entenderá que não cabem 250px lado a lado e fará o *wrap* para 1 card por linha. Tudo de forma automática e fluida.
 
-#### Conclusão e Próximos Passos
+### Conclusão e Próximos Passos
 
 O CSS Grid não substitui o Flexbox, ele o eleva. Aprender a dominar `fr`, `gap` e `grid-template-areas` dará a você a confiança para arquitetar qualquer interface desenhada no Figma ou CorelDraw, por mais excêntrica que ela seja, garantindo que o código se mantenha previsível e sustentável.
 

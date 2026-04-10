@@ -7,14 +7,12 @@ summary: "Abandone o var! Domine let, const, arrow functions, desestruturação 
 ## Estação 04
 ### JavaScript ES6+ e a Modernização do Motor
 
----
-
-|RESUMO| |
-|:---|---:|
-|Palavras:| ~1.400|
-|Tempo de leitura:| 7 min|
-| Linha | 01 Fundamentos |
-|Progresso:|`[■■■■----------------] 22.2%`|
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
 
 Nas três primeiras estações, nós cuidamos da carroceria e da pintura do nosso vagão usando HTML e CSS. Construímos uma interface semântica, acessível e perfeitamente alinhada com Flexbox e Grid. Mas um vagão sem tração e sem sistemas de controle é apenas uma caixa parada nos trilhos. Chegou a hora de dar partida no motor: o **JavaScript**.
 
@@ -23,7 +21,7 @@ O JavaScript nasceu em 1995 com a missão simples de adicionar pequenas interati
 Isso mudou drasticamente em 2015, com o lançamento do **ECMAScript 6 (ES6)**. Foi a maior e mais profunda atualização da história da linguagem, transformando o JS em uma ferramenta madura e pronta para arquiteturas complexas. O ecossistema React é inteiramente construído sobre esses pilares. Se você tentar escrever React usando a sintaxe antiga do JavaScript, terá uma experiência terrível.
 
 Nesta estação, vamos dominar os recursos do ES6+ que você usará todos os dias, tanto no front-end quanto no back-end com Node.js.
-#### 1. O Fim do `var`: Bem-vindos `let` e `const`
+### 1. O Fim do `var`: Bem-vindos `let` e `const`
 
 Por décadas, a única forma de declarar variáveis era usando a palavra-chave `var`. O grande problema do `var` é que ele não respeita blocos lógicos (como um `if` ou um `for`), ele vaza para fora deles. Isso causava bugs terríveis de sobrescrita de dados.
 
@@ -60,7 +58,7 @@ telemetria.temperatura = 45;
 telemetria = { temperatura: 45, status: "alerta" }; 
 ```
 
-#### 2. Template Literals (As Crases Mágicas)
+### 2. Template Literals (As Crases Mágicas)
 
 Antes do ES6, juntar variáveis com textos era uma sessão de tortura envolvendo aspas e dezenas de sinais de `+`, o que dificultava muito a leitura e a manutenção (especialmente ao montar queries SQL no back-end ou exibir textos dinâmicos na tela).
 
@@ -80,7 +78,7 @@ const logModerno = `Alerta: O ${equipamento} está ${status}. Última leitura à
 
 No React, você fará isso o tempo todo para montar classes CSS dinâmicas ou renderizar informações de componentes na interface.
 
-#### 3. Arrow Functions: Sintaxe Enxuta e Contexto Seguro
+### 3. Arrow Functions: Sintaxe Enxuta e Contexto Seguro
 
 As funções são o coração do JavaScript. O ES6 introduziu as **Arrow Functions** (`() => {}`), que não são apenas um "açúcar sintático" para escrever menos código; elas possuem um comportamento especial e fundamental.
 
@@ -103,7 +101,7 @@ const calcularRiscoExpressa = temperatura => temperatura > 80;
 
 **A vantagem técnica:** Funções tradicionais criam o seu próprio contexto (`this`). Se você estivesse usando classes, passar uma função tradicional como _callback_ muitas vezes fazia o programa "esquecer" quem a chamou. As Arrow Functions não possuem um `this` próprio; elas herdam o contexto de onde foram declaradas. Isso foi tão revolucionário que o React baseou toda a sua evolução em componentes funcionais escritos como Arrow Functions.
 
-#### 4. Desestruturação (Destructuring): Extraindo o Ouro
+### 4. Desestruturação (Destructuring): Extraindo o Ouro
 
 No tráfego de dados entre um monolito Node.js e o frontend React, você lidará diariamente com objetos pesados (JSONs) vindos do banco de dados (como PostgreSQL ou DynamoDB). Extrair informações desses objetos costumava ser repetitivo:
 
@@ -132,11 +130,11 @@ console.log(`Dispositivo ${id} está com ${bateria}% de bateria na latitude ${la
 
 No React, a desestruturação é usada 100% do tempo. Quando um componente recebe propriedades (as famosas _props_), nós imediatamente desestruturamos o que precisamos, deixando o código limpo e focado.
 
-#### 5. Spread e Rest Operators (`...`)
+### 5. Spread e Rest Operators (`...`)
 
 Este é, sem dúvida, o operador mais utilizado na manipulação de estados modernos. Representado por três pontos (`...`), ele tem duas funções opostas, dependendo de onde é usado.
 
-#### Spread (Espalhar)
+### Spread (Espalhar)
 
 O Spread pega um objeto ou array e "derrama" seu conteúdo dentro de outro. Isso é vital no React, pois os estados (state) são imutáveis. Não podemos simplesmente alterar um valor num objeto; precisamos criar um _novo_ objeto copiando o anterior e modificando apenas o necessário.
 
@@ -157,7 +155,7 @@ console.log(novasConfiguracoes);
 // Resultado: { tema: "light", notificacoes: true }
 ```
 
-#### Rest (Agrupar)
+### Rest (Agrupar)
 
 Quando usado na assinatura de uma função ou na desestruturação, os três pontos mudam de nome para **Rest**. Ele significa "agrupe o _resto_ em uma variável".
 
@@ -172,7 +170,7 @@ console.log(temp); // 42
 console.log(demaisLeituras); // [65, 80, 95]
 ```
 
-#### Conclusão e Próximos Passos
+### Conclusão e Próximos Passos
 
 A adoção do ES6 dividiu a história do JavaScript em duas eras. Ferramentas como Vite, Next.js e o próprio Node.js esperam que você escreva seu código utilizando `const`, _Arrow Functions_, _Destructuring_ e _Spread/Rest_. É essa sintaxe moderna que garante um código escalável, menos propenso a bugs e muito mais agradável de ler.
 

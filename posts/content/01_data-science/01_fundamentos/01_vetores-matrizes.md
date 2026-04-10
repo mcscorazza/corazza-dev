@@ -5,8 +5,15 @@ line: "Fundamentos"
 summary: "Fundamentos de Algebra Linear"
 ---
 
-## Estação 01
-> Matrizes e os Fundamentos da Álgebra Linear</small>
+# Estação 01
+## Matrizes e os Fundamentos da Álgebra Linear
+
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
 
 ### 1. A Passagem do Escalar para o Multidimensional
 
@@ -150,7 +157,7 @@ print(f"O NumPy foi {low_time / fast_time:.0f}x mais rápido!")
 Saída (os valores variam de acordo com a capacidade de processamento de cada computador):
 
 ```bash
-Tempo com Loop For: 1.4612 segundos                                                                                             
+Tempo com Loop For: 1.4612 segundos
 Tempo com Vetorização: 0.0044 seg
 O NumPy foi 335x mais rápido!
 ```

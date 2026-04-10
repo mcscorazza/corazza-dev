@@ -5,8 +5,15 @@ line: "Fundamentos"
 summary: "Big O, Hash Tables e Árvores Binárias"
 ---
 
-## Estação 02
-> Big O, Hash Tables e Árvores Binárias</small>
+# Estação 02
+## Big O, Hash Tables e Árvores Binárias
+
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
 
 ### 1. O Problema da Agulha no Palheiro e o Gargalo de Leitura
 
@@ -83,7 +90,7 @@ Vamos esquecer as funções prontas do Python por um momento e escrever nossos p
 
 
 
-```Python
+```python
 import time
 
 # Criando uma base ordenada de 10 milhões de IDs de clientes

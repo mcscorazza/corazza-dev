@@ -5,9 +5,15 @@ line: "Fundamentos"
 summary: "Inner, Outer, Cross e Theta Joins"
 ---
 
-## Estação 04
-> Inner, Outer, Cross e Theta Joins
+# Estação 04
+## Inner, Outer, Cross e Theta Joins
 
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
 
 ### 1. O Problema do Mundo Real: Dados Órfãos
 
@@ -67,7 +73,7 @@ Imagine cruzar a tabela de `Aluguéis` com a tabela de `Carros Disponíveis`, ma
 
 Vamos simular uma base de dados imperfeita para ver os Joins agindo na vida real. Usaremos a função `pd.merge()` do Pandas, que é a ferramenta definitiva para isso.
 
-```Python
+```python
 import pandas as pd
 import numpy as np
 

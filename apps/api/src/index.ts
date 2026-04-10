@@ -25,10 +25,10 @@ app.get("/api/posts", async (req, res) => {
     const posts = await prisma.post.findMany({
       include: {
         line: {
-          include: { trail: true }
-        }
+          include: { trail: true },
+        },
       },
-      orderBy: { createdAt: 'desc' }
+      orderBy: { createdAt: "desc" },
     });
     res.json(posts);
   } catch (error) {
@@ -44,20 +44,20 @@ app.get("/api/trails/:slug", async (req, res) => {
       where: { slug },
       include: {
         lines: {
-          orderBy: { order: 'asc' },
+          orderBy: { order: "asc" },
           include: {
             posts: {
-              orderBy: { order: 'asc' },
-              select: { 
-                id: true, 
-                title: true, 
-                slug: true, 
-                order: true 
-              }
-            }
-          }
-        }
-      }
+              orderBy: { order: "asc" },
+              select: {
+                id: true,
+                title: true,
+                slug: true,
+                order: true,
+              },
+            },
+          },
+        },
+      },
     });
 
     if (!trail) {
@@ -71,7 +71,7 @@ app.get("/api/trails/:slug", async (req, res) => {
   }
 });
 
-app.get('/api/lines/:trailSlug/:lineSlug', async (req, res) => {
+app.get("/api/lines/:trailSlug/:lineSlug", async (req, res) => {
   const { trailSlug, lineSlug } = req.params;
 
   try {
@@ -80,66 +80,73 @@ app.get('/api/lines/:trailSlug/:lineSlug', async (req, res) => {
         line: {
           slug: lineSlug,
           trail: {
-            slug: trailSlug // O "segredo" está aqui: filtramos pelo pai também
-          }
-        }
+            slug: trailSlug, // O "segredo" está aqui: filtramos pelo pai também
+          },
+        },
       },
-      orderBy: { order: 'asc' },
-      select: { title: true, slug: true, order: true }
+      orderBy: { order: "asc" },
+      select: { title: true, slug: true, order: true },
     });
     res.json(posts);
   } catch (error) {
-    res.status(500).json({ error: "Erro ao buscar posts da linha específica." });
+    res
+      .status(500)
+      .json({ error: "Erro ao buscar posts da linha específica." });
   }
 });
 
 app.get("/api/trails", async (req, res) => {
   try {
     const trails = await prisma.trail.findMany({
-      orderBy: { order: 'asc' },
+      orderBy: { order: "asc" },
       include: {
         lines: {
-          orderBy: { order: 'asc' },
+          orderBy: { order: "asc" },
           include: {
+            _count: {
+              select: { posts: true },
+            },
             posts: {
-              orderBy: { order: 'asc' },
+              orderBy: { order: "asc" },
               take: 1,
-              select: { slug: true }
-            }
-          }
-        }
-      }
+              select: { slug: true },
+            },
+          },
+        },
+      },
     });
 
-    const summary = trails.map(t => ({
+    const summary = trails.map((t) => ({
       id: t.id,
       title: t.title,
       slug: t.slug,
-      lines: t.lines.map(l => ({
+      lines: t.lines.map((l) => ({
         title: l.title,
         slug: l.slug,
-        firstPostSlug: l.posts[0]?.slug
+        firstPostSlug: l.posts[0]?.slug,
       })),
-      postsCount: t.lines.reduce((acc, line) => acc + line.posts.length, 0) // Exemplo simplificado
+      linesCount: t.lines.length,
+      postsCount: t.lines.reduce((acc, l) => acc + l._count.posts, 0),
     }));
 
     res.json(summary);
   } catch (error) {
+    console.error("❌ Erro ao buscar resumo das trilhas:", error);
     res.status(500).json({ error: "Erro ao carregar menu lateral" });
   }
 });
 
-app.get('/api/trails/:trailSlug/lines/:lineSlug', async (req, res) => {
+app.get("/api/trails/:trailSlug/lines/:lineSlug", async (req, res) => {
   const { trailSlug, lineSlug } = req.params;
 
   const posts = await prisma.post.findMany({
     where: {
       line: {
         slug: lineSlug,
-        trail: { slug: trailSlug }
-      }
+        trail: { slug: trailSlug },
+      },
     },
-    orderBy: { order: 'asc' },
+    orderBy: { order: "asc" },
   });
   res.json(posts);
 });
@@ -151,14 +158,17 @@ app.get("/api/posts/:trailSlug/:lineSlug/:postSlug", async (req, res) => {
     where: {
       slug_lineId: {
         slug: postSlug,
-        lineId: (await prisma.line.findFirst({
-          where: { slug: lineSlug, trail: { slug: trailSlug } }
-        }))?.id || ''
-      }
+        lineId:
+          (
+            await prisma.line.findFirst({
+              where: { slug: lineSlug, trail: { slug: trailSlug } },
+            })
+          )?.id || "",
+      },
     },
     include: {
-      line: { include: { trail: true } }
-    }
+      line: { include: { trail: true } },
+    },
   });
 
   if (!post) return res.status(404).json({ error: "Post não encontrado" });
@@ -175,7 +185,7 @@ app.post("/api/posts", async (req, res) => {
       create: {
         slug: trail.slug,
         title: trail.title,
-        order: trail.order
+        order: trail.order,
       },
     });
 
@@ -183,8 +193,8 @@ app.post("/api/posts", async (req, res) => {
       where: {
         slug_trailId: {
           slug: line.slug,
-          trailId: trailDoc.id
-        }
+          trailId: trailDoc.id,
+        },
       },
       update: { order: line.order },
       create: {
@@ -199,8 +209,8 @@ app.post("/api/posts", async (req, res) => {
       where: {
         slug_lineId: {
           slug: slug,
-          lineId: lineDoc.id
-        }
+          lineId: lineDoc.id,
+        },
       },
       update: {
         title,
@@ -208,7 +218,7 @@ app.post("/api/posts", async (req, res) => {
         hash,
         summary,
         order,
-        lineId: lineDoc.id
+        lineId: lineDoc.id,
       },
       create: {
         slug,
@@ -217,7 +227,7 @@ app.post("/api/posts", async (req, res) => {
         summary,
         hash,
         order,
-        lineId: lineDoc.id
+        lineId: lineDoc.id,
       },
     });
 
@@ -236,6 +246,6 @@ prisma
   .catch((err) => console.error("❌ Falha ao conectar no banco:", err));
 
 const PORT = 3000;
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 API rodando em http://0.0.0.0:${PORT}`);
 });

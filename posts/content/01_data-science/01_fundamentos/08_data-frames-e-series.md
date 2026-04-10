@@ -5,8 +5,15 @@ line: "Fundamentos"
 summary: "Data Frames e Series"
 ---
 
-## Estação 08
-> Data Frames e Series
+# Estação 08
+## Data Frames e Series
+
+| RESUMO            |                                |
+| :---------------- | -----------------------------: |
+| Palavras:         |                         ~1.400 |
+| Tempo de leitura: |                          7 min |
+| Linha             |                 01 Fundamentos |
+| Progresso:        | `[■■■■----------------] 22.2%` |
 
 ### 1. O Abismo Entre a Matemática e o Negócio
 
@@ -66,7 +73,7 @@ Vamos sair da teoria e provar essa diferença no código. Usaremos a biblioteca 
 
 
 
-```Python
+```python
 import pandas as pd
 import numpy as np
 
