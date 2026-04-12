@@ -80,7 +80,7 @@ app.get("/api/lines/:trailSlug/:lineSlug", async (req, res) => {
         line: {
           slug: lineSlug,
           trail: {
-            slug: trailSlug, // O "segredo" está aqui: filtramos pelo pai também
+            slug: trailSlug,
           },
         },
       },

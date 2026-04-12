@@ -53,38 +53,40 @@ export function PostPage() {
   return (
     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[256px_1fr_256px]">
 
-      <aside className="w-64 hidden lg:block sticky top-24 h-fit">
-        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
-          {currentPost.line.title}
-        </h3>
+      <aside className="w-64 hidden lg:block bg-slate-200">
+        <div className='sticky top-10 p-6'>
+          <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
+            {currentPost.line.title}
+          </h3>
 
-        <div className="relative border-l-8 border-violet-400 ml-3 py-2">
-          {linePosts.map((p) => {
-            const isCurrent = p.slug === currentPost.slug;
-            const isPast = linePosts.findIndex(x => x.slug === p.slug) <
-              linePosts.findIndex(x => x.slug === currentPost.slug);
+          <div className="relative border-l-8 border-violet-400 ml-3 py-2">
+            {linePosts.map((p) => {
+              const isCurrent = p.slug === currentPost.slug;
+              const isPast = linePosts.findIndex(x => x.slug === p.slug) <
+                linePosts.findIndex(x => x.slug === currentPost.slug);
 
-            return (
-              <div key={p.slug} className="mb-4 ml-6 relative">
-                <div className={`absolute -left-[36px] top-1 w-4 h-4 rounded-full border-2 bg-white 
+              return (
+                <div key={p.slug} className="mb-4 ml-6 relative">
+                  <div className={`absolute -left-[36px] top-1 w-4 h-4 rounded-full border-2 bg-white 
                 ${isCurrent ? 'border-violet-600 scale-125' : 'border-slate-900'}`}
-                />
+                  />
 
-                <Link
-                  to={`/post/${trailSlug}/${lineSlug}/${p.slug}`}
-                  className={`text-sm transition-colors block
+                  <Link
+                    to={`/post/${trailSlug}/${lineSlug}/${p.slug}`}
+                    className={`text-sm transition-colors block
                   ${isCurrent ? 'font-bold text-slate-900' :
-                      isPast ? 'text-slate-600 hover:text-blue-500' : 'text-slate-400 hover:text-slate-600'}`}
-                >
-                  {p.title}
-                </Link>
-              </div>
-            );
-          })}
+                        isPast ? 'text-slate-600 hover:text-blue-500' : 'text-slate-400 hover:text-slate-600'}`}
+                  >
+                    {p.title}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </aside>
 
-      <article className="prose prose-slate lg:prose-xl max-w-1fr mx-auto w-full bg-white p-8">
+      <article className="prose prose-sky lg:prose-xl max-w-1fr mx-auto w-full bg-[#FFFAFA] p-8">
         <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block">
           ← Voltar para a lista
         </Link>
@@ -104,7 +106,7 @@ export function PostPage() {
                 const [url, label] = props.src?.split('#') || [];
 
                 const classMap: Record<string, string> = {
-                  small: 'max-w-[300px] shadow-md',
+                  small: 'max-w-[200px] shadow-md',
                   side: 'max-w-[40%] float-right ml-4 mb-4',
                   full: 'w-full shadow-2xl',
                   center: 'max-w-[70%] mx-auto display-block'
@@ -153,65 +155,67 @@ export function PostPage() {
         </div>
       </article>
 
-      <aside className="w-64 hidden lg:block sticky top-24 h-fit">
-        <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
-          Explorar Conteúdo
-        </h3>
+      <aside className="w-64 hidden lg:block bg-slate-200">
+        <div className='sticky top-10 p-6'>
+          <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
+            Explorar Conteúdo
+          </h3>
 
-        <div className="flex flex-col gap-3">
-          {allTrails.map(trail => {
-            const isCurrentTrail = trail.slug === currentPost?.line?.trail?.slug;
-            const isExpanded = expandedTrail === trail.slug;
+          <div className="flex flex-col gap-3">
+            {allTrails.map(trail => {
+              const isCurrentTrail = trail.slug === currentPost?.line?.trail?.slug;
+              const isExpanded = expandedTrail === trail.slug;
 
-            return (
-              <div
-                key={trail.id}
-                className={`rounded-2xl border transition-all overflow-hidden ${isCurrentTrail ? 'border-violet-200 shadow-sm' : 'border-slate-100'
-                  }`}
-              >
-                <button
-                  onClick={() => setExpandedTrail(isExpanded ? null : trail.slug)}
-                  className={`w-full text-left p-4 flex flex-col transition-colors ${isExpanded ? 'bg-slate-50' : 'bg-white hover:bg-slate-100'
+              return (
+                <div
+                  key={trail.id}
+                  className={`rounded-2xl border transition-all overflow-hidden ${isCurrentTrail ? 'border-violet-200 shadow-sm' : 'border-slate-100'
                     }`}
                 >
-                  <div className="flex justify-between items-start">
-                    <h4 className={`font-bold text-sm ${isCurrentTrail ? 'text-violet-600' : 'text-slate-900'}`}>
-                      <Link
-                        to={`/trail/${trail.slug}`}
-                      >{trail.title}</Link>
-
-                    </h4>
-                    <span className="text-[10px] text-slate-400">{isExpanded ? '▲' : '▼'}</span>
-                  </div>
-                  <span className="text-[10px] font-medium text-slate-400 uppercase mt-1">
-                    {trail.lines.length} Linhas • {trail.postsCount} Estações
-                  </span>
-                </button>
-
-                {isExpanded && (
-                  <div className="bg-white p-2 flex flex-col gap-1 border-t border-slate-100">
-                    {trail.lines.map((line: any) => {
-                      const isCurrentLine = trail.slug === currentPost?.line?.trail?.slug && line.slug === currentPost?.line?.slug;
-
-                      return (
+                  <button
+                    onClick={() => setExpandedTrail(isExpanded ? null : trail.slug)}
+                    className={`w-full text-left p-4 flex flex-col transition-colors ${isExpanded ? 'bg-slate-50' : 'bg-white hover:bg-slate-100'
+                      }`}
+                  >
+                    <div className="flex justify-between items-start">
+                      <h4 className={`font-bold text-sm ${isCurrentTrail ? 'text-violet-600' : 'text-slate-900'}`}>
                         <Link
-                          key={line.slug}
-                          to={`/post/${trail.slug}/${line.slug}/${line.firstPostSlug}`}
-                          className={`text-xs p-3 rounded-lg flex items-center justify-between group transition-all ${isCurrentLine
-                            ? 'bg-violet-600 text-white font-bold'
-                            : 'text-slate-600 hover:bg-blue-50 hover:text-blue-600'
-                            }`}
-                        >
-                          <span>{line.title}</span>
-                          {!isCurrentLine && <span className="opacity-0 group-hover:opacity-100">→</span>}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                          to={`/trail/${trail.slug}`}
+                        >{trail.title}</Link>
+
+                      </h4>
+                      <span className="text-[10px] text-slate-400">{isExpanded ? '▲' : '▼'}</span>
+                    </div>
+                    <span className="text-[10px] font-medium text-slate-400 uppercase mt-1">
+                      {trail.lines.length} Linhas • {trail.postsCount} Estações
+                    </span>
+                  </button>
+
+                  {isExpanded && (
+                    <div className="bg-white p-2 flex flex-col gap-1 border-t border-slate-100">
+                      {trail.lines.map((line: any) => {
+                        const isCurrentLine = trail.slug === currentPost?.line?.trail?.slug && line.slug === currentPost?.line?.slug;
+
+                        return (
+                          <Link
+                            key={line.slug}
+                            to={`/post/${trail.slug}/${line.slug}/${line.firstPostSlug}`}
+                            className={`text-xs p-3 rounded-lg flex items-center justify-between group transition-all ${isCurrentLine
+                              ? 'bg-violet-600 text-white font-bold'
+                              : 'text-slate-600 hover:bg-blue-50 hover:text-blue-600'
+                              }`}
+                          >
+                            <span>{line.title}</span>
+                            {!isCurrentLine && <span className="opacity-0 group-hover:opacity-100">→</span>}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </aside>
     </div>
