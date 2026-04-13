@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Post } from '@corazza/types';
+import { Post, TrailSummary } from '@corazza/types';
 
 
 export function PostPage() {
@@ -51,10 +51,10 @@ export function PostPage() {
   if (!currentPost) return <div className="p-10 text-center">Carregando post...</div>;
 
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[256px_1fr_256px]">
+    <div className="max-w-[1350px] mx-auto grid grid-cols-1 lg:grid-cols-[275px_1fr_275px]">
 
-      <aside className="w-64 hidden lg:block bg-slate-200">
-        <div className='sticky top-10 p-6'>
+      <aside className="hidden lg:block bg-slate-100">
+        <div className='sticky top-10 p-4'>
           <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
             {currentPost.line.title}
           </h3>
@@ -86,11 +86,11 @@ export function PostPage() {
         </div>
       </aside>
 
-      <article className="prose prose-sky lg:prose-xl max-w-1fr mx-auto w-full bg-[#FFFAFA] p-8">
-        <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block">
+      <article className="prose prose-sky lg:prose-xl max-w-[800px] bg-[#FFFAFA]">
+        <Link title="Voltar" to="/" className="text-blue-600 hover:underline mb-8 block p-4">
           ← Voltar para a lista
         </Link>
-        <div className="prose prose-sm prose-blue md:prose-base max-w-full mx-auto font-sans">
+        <div className="prose prose-sm md:prose-base max-w-none font-sans p-6">
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             remarkPlugins={[remarkGfm]}
@@ -155,8 +155,8 @@ export function PostPage() {
         </div>
       </article>
 
-      <aside className="w-64 hidden lg:block bg-slate-200">
-        <div className='sticky top-10 p-6'>
+      <aside className="hidden lg:block bg-slate-100">
+        <div className='sticky top-10 p-4'>
           <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
             Explorar Conteúdo
           </h3>
@@ -174,19 +174,16 @@ export function PostPage() {
                 >
                   <button
                     onClick={() => setExpandedTrail(isExpanded ? null : trail.slug)}
-                    className={`w-full text-left p-4 flex flex-col transition-colors ${isExpanded ? 'bg-slate-50' : 'bg-white hover:bg-slate-100'
+                    className={`w-full text-left p-4 flex flex-col transition-colors ${isExpanded ? 'bg-slate-50' : 'bg-white hover:bg-slate-200'
                       }`}
                   >
-                    <div className="flex justify-between items-start">
-                      <h4 className={`font-bold text-sm ${isCurrentTrail ? 'text-violet-600' : 'text-slate-900'}`}>
-                        <Link
-                          to={`/trail/${trail.slug}`}
-                        >{trail.title}</Link>
-
+                    <div className="flex flex-row items-center justify-between w-full">
+                      <h4 className={`font-bold text-sm !mt-1 hover:text-violet-600 ${isCurrentTrail ? 'text-violet-600' : 'text-slate-900'}`}>
+                        <Link to={`/trail/${trail.slug}`}>{trail.title}</Link>
                       </h4>
-                      <span className="text-[10px] text-slate-400">{isExpanded ? '▲' : '▼'}</span>
+                      <span className="text-[14px] text-slate-400 ">{isExpanded ? '▲' : '▼'}</span>
                     </div>
-                    <span className="text-[10px] font-medium text-slate-400 uppercase mt-1">
+                    <span className="text-[10px] font-medium text-slate-400 uppercase">
                       {trail.lines.length} Linhas • {trail.postsCount} Estações
                     </span>
                   </button>

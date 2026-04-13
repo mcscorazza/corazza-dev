@@ -24,6 +24,7 @@ export interface Post {
   export interface TrailSummary {
     id: string;
     title: string;
+    lines: string[];
     slug: string;
     linesCount: number;
     postsCount: number;
