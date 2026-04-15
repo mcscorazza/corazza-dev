@@ -1,23 +1,4 @@
 services:
-  db:
-    image: postgres:16-alpine
-    container_name: corazza-db
-    restart: always
-    environment:
-      POSTGRES_USER: corazza
-      POSTGRES_PASSWORD: corz
-      POSTGRES_DB: corazza_blog
-    healthcheck:
-      test: ["CMD", "pg_isready", "-q", "-d", "corazza_blog", "-U", "corazza"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 10s
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
   api:
     build:
       context: .
@@ -26,10 +7,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: "postgresql://corazza:corz@db:5432/corazza_blog?schema=public"
-    depends_on:
-      db:
-        condition: service_healthy
+      - DATABASE_URL=
+      - DIRECT_URL=
     volumes:
       - .:/app
       - /app/node_modules
@@ -48,6 +27,3 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-
-volumes:
-  postgres_data:
