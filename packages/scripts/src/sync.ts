@@ -7,7 +7,7 @@ import glob from "fast-glob";
 
 const currentDir = import.meta.dirname;
 const CONTENT_DIR = path.resolve(currentDir, "../../../posts/content");
-const API_URL = "http://localhost:3000/api";
+const API_URL = "http://api.corazza.dev/api";
 const ASSETS_DESTINATION = path.resolve(currentDir, '../../../apps/web/public/assets/posts-images');
 
 function sanitizeFilename(filename: string) {
